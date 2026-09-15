@@ -1,0 +1,22 @@
+.block {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-items: center;
+  gap: rem(2px);
+  width: fit-content;
+  font-size: rem(36px);
+  font-weight: var(--typography-bold);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.left {
+  background-color: var(--gray-0);
+  color: var(--blue-10);
+}
+
+.right {
+  padding-inline: rem(8px);
+  background-color: var(--blue-10);
+  color: var(--gray-0);
+}

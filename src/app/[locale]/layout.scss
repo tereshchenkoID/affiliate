@@ -1,0 +1,439 @@
+:root {
+  --min-width: 320px;
+  --max-width: 1920px;
+  --font-size: 16px;
+  --line-height: 1.5;
+  --typography-regular: 400;
+  --typography-medium: 500;
+  --typography-bold: 700;
+  --border-radius-default: 0.5rem;
+  --border-radius-2: 0.125rem;
+  --border-radius-4: 0.25rem;
+  --border-radius-6: 0.375rem;
+  --border-radius-8: 0.5rem;
+  --border-radius-10: 0.625rem;
+  --border-radius-16: 1rem;
+
+  /* --- GRAY (Standard Neutral) --- */
+  --gray-0: rgb(255 255 255); /* #ffffff */
+  --gray-1: rgb(252 252 253); /* #fcfcfd */
+  --gray-2: rgb(249 249 251); /* #f9f9fb */
+  --gray-3: rgb(240 240 243); /* #f0f0f3 */
+  --gray-4: rgb(232 232 236); /* #e8e8ec */
+  --gray-5: rgb(224 225 230); /* #e0e1e6 */
+  --gray-6: rgb(217 217 224); /* #d9d9e0 */
+  --gray-7: rgb(205 206 213); /* #cdced5 */
+  --gray-8: rgb(185 186 195); /* #b9bac3 */
+  --gray-9: rgb(139 141 152); /* #8b8d98 */
+  --gray-10: rgb(128 130 141); /* #80828d */
+  --gray-11: rgb(98 99 108); /* #62636c */
+  --gray-12: rgb(30 31 36); /* #1e1f24 */
+
+  /* --- SLATE (Cool Blue-Gray) --- */
+  --slate-1: rgb(251 252 253); /* #fbfcfd */
+  --slate-2: rgb(248 249 250); /* #f8f9fa */
+  --slate-3: rgb(241 243 245); /* #f1f3f5 */
+  --slate-4: rgb(236 238 240); /* #eceef0 */
+  --slate-5: rgb(230 232 235); /* #e6e8eb */
+  --slate-6: rgb(223 226 230); /* #dfe2e6 */
+  --slate-7: rgb(211 215 220); /* #d3d7dc */
+  --slate-8: rgb(193 199 205); /* #c1c7cd */
+  --slate-9: rgb(136 144 150); /* #889096 */
+  --slate-10: rgb(126 134 140); /* #7e868c */
+  --slate-11: rgb(104 112 118); /* #687076 */
+  --slate-12: rgb(17 24 28); /* #11181c */
+
+  /* --- BLUE (Primary) --- */
+  --blue-1: rgb(251 253 255); /* #fbfdff */
+  --blue-2: rgb(244 249 255); /* #f4f9ff */
+  --blue-3: rgb(230 242 255); /* #e6f2ff */
+  --blue-4: rgb(213 232 255); /* #d5e8ff */
+  --blue-5: rgb(194 221 255); /* #c2ddff */
+  --blue-6: rgb(170 206 255); /* #aaceff */
+  --blue-7: rgb(142 200 246); /* #8ec8f6 */
+  --blue-8: rgb(94 177 239); /* #5eb1ef */
+  --blue-9: rgb(0 145 255); /* #0091ff */
+  --blue-10: rgb(0 129 242); /* #0081f2 */
+  --blue-11: rgb(0 106 220); /* #006adc */
+  --blue-12: rgb(0 37 77); /* #00254d */
+
+  /* --- GREEN (Success) --- */
+  --green-1: rgb(251 254 252); /* #fbfefc */
+  --green-2: rgb(242 251 245); /* #f2fbf5 */
+  --green-3: rgb(225 249 232); /* #e1f9e8 */
+  --green-4: rgb(209 244 217); /* #d1f4d9 */
+  --green-5: rgb(188 235 197); /* #bcebc5 */
+  --green-6: rgb(163 223 177); /* #a3dfb1 */
+  --green-7: rgb(130 206 151); /* #82ce97 */
+  --green-8: rgb(91 185 116); /* #5bb974 */
+  --green-9: rgb(48 164 108); /* #30a46c */
+  --green-10: rgb(43 154 98); /* #2b9a62 */
+  --green-11: rgb(33 131 83); /* #218353 */
+  --green-12: rgb(25 59 45); /* #193b2d */
+
+  /* --- RED (Error / Danger) --- */
+  --red-1: rgb(255 252 252); /* #fffcfc */
+  --red-2: rgb(255 245 245); /* #fff5f5 */
+  --red-3: rgb(255 232 232); /* #ffe8e8 */
+  --red-4: rgb(255 224 224); /* #ffe0e0 */
+  --red-5: rgb(255 208 208); /* #ffd0d0 */
+  --red-6: rgb(255 186 186); /* #ffbaba */
+  --red-7: rgb(249 154 154); /* #f99a9a */
+  --red-8: rgb(243 125 125); /* #f37d7d */
+  --red-9: rgb(229 72 77); /* #e5484d */
+  --red-10: rgb(220 62 66); /* #dc3e42 */
+  --red-11: rgb(206 44 49); /* #ce2c31 */
+  --red-12: rgb(100 23 35); /* #641723 */
+
+  /* --- AMBER (Warning) --- */
+  --amber-1: rgb(254 253 251); /* #fefdfb */
+  --amber-2: rgb(254 251 233); /* #fefbe9 */
+  --amber-3: rgb(255 247 194); /* #fff7c2 */
+  --amber-4: rgb(255 238 158); /* #ffee9e */
+  --amber-5: rgb(255 227 122); /* #ffe37a */
+  --amber-6: rgb(247 211 82); /* #f7d352 */
+  --amber-7: rgb(224 190 54); /* #e0be36 */
+  --amber-8: rgb(198 160 29); /* #c6a01d */
+  --amber-9: rgb(255 178 36); /* #ffb224 */
+  --amber-10: rgb(255 160 0); /* #ffa000 */
+  --amber-11: rgb(173 87 0); /* #ad5700 */
+  --amber-12: rgb(78 32 0); /* #4e2000 */
+
+  /* --- INDIGO --- */
+  --indigo-1: rgb(253 253 254); /* #fdfdfe */
+  --indigo-2: rgb(247 248 254); /* #f7f8fe */
+  --indigo-3: rgb(237 240 254); /* #edf0fe */
+  --indigo-4: rgb(225 230 254); /* #e1e6fe */
+  --indigo-5: rgb(210 218 254); /* #d2dafe */
+  --indigo-6: rgb(193 204 254); /* #c1ccfe */
+  --indigo-7: rgb(171 186 253); /* #abbafd */
+  --indigo-8: rgb(141 160 250); /* #8da0fa */
+  --indigo-9: rgb(62 99 221); /* #3e63dd */
+  --indigo-10: rgb(51 88 212); /* #3358d4 */
+  --indigo-11: rgb(58 91 199); /* #3a5bc7 */
+  --indigo-12: rgb(31 45 92); /* #1f2d5c */
+
+  /* --- VIOLET --- */
+  --violet-1: rgb(253 253 254); /* #fdfdfe */
+  --violet-2: rgb(249 248 254); /* #f9f8fe */
+  --violet-3: rgb(242 240 254); /* #f2f0fe */
+  --violet-4: rgb(232 229 255); /* #e8e5ff */
+  --violet-5: rgb(222 218 254); /* #dedafe */
+  --violet-6: rgb(206 202 253); /* #cecafd */
+  --violet-7: rgb(188 181 252); /* #bcb5fc */
+  --violet-8: rgb(158 140 242); /* #9e8cf2 */
+  --violet-9: rgb(110 86 207); /* #6e56cf */
+  --violet-10: rgb(101 77 196); /* #654dc4 */
+  --violet-11: rgb(101 80 185); /* #6550b9 */
+  --violet-12: rgb(47 38 95); /* #2f265f */
+
+  /* --- ORANGE --- */
+  --orange-1: rgb(254 253 254); /* #fefdfe */
+  --orange-2: rgb(255 248 243); /* #fff8f3 */
+  --orange-3: rgb(255 239 226); /* #ffefe2 */
+  --orange-4: rgb(255 227 207); /* #ffe3cf */
+  --orange-5: rgb(255 211 181); /* #ffd3b5 */
+  --orange-6: rgb(255 191 149); /* #ffbf95 */
+  --orange-7: rgb(251 164 109); /* #fba46d */
+  --orange-8: rgb(245 130 56); /* #f58238 */
+  --orange-9: rgb(247 104 8); /* #f76808 */
+  --orange-10: rgb(237 95 0); /* #ed5f00 */
+  --orange-11: rgb(189 75 0); /* #bd4b00 */
+  --orange-12: rgb(80 27 0); /* #501b00 */
+}
+
+[data-theme='dark'] {
+  /* --- GRAY DARK --- */
+  --gray-0: rgb(0 0 0); /* #000000 */
+  --gray-1: rgb(17 17 19); /* #111113 */
+  --gray-2: rgb(24 25 27); /* #18191b */
+  --gray-3: rgb(33 34 37); /* #212225 */
+  --gray-4: rgb(39 42 45); /* #272a2d */
+  --gray-5: rgb(46 49 53); /* #2e3135 */
+  --gray-6: rgb(54 58 63); /* #363a3f */
+  --gray-7: rgb(67 72 78); /* #43484e */
+  --gray-8: rgb(90 97 105); /* #5a6169 */
+  --gray-9: rgb(111 118 129); /* #6f7681 */
+  --gray-10: rgb(124 131 143); /* #7c838f */
+  --gray-11: rgb(180 185 193); /* #b4b9c1 */
+  --gray-12: rgb(238 238 240); /* #eeeef0 */
+
+  /* --- SLATE DARK --- */
+  --slate-1: rgb(17 19 21); /* #111315 */
+  --slate-2: rgb(21 23 25); /* #151719 */
+  --slate-3: rgb(28 30 33); /* #1c1e21 */
+  --slate-4: rgb(35 37 41); /* #232529 */
+  --slate-5: rgb(42 45 49); /* #2a2d31 */
+  --slate-6: rgb(49 53 59); /* #31353b */
+  --slate-7: rgb(62 67 74); /* #3e434a */
+  --slate-8: rgb(80 86 96); /* #505660 */
+  --slate-9: rgb(104 112 118); /* #687076 */
+  --slate-10: rgb(126 134 140); /* #7e868c */
+  --slate-11: rgb(160 166 172); /* #a0a6ac */
+  --slate-12: rgb(236 238 240); /* #eceef0 */
+
+  /* --- BLUE DARK --- */
+  --blue-1: rgb(13 21 32); /* #0d1520 */
+  --blue-2: rgb(17 26 41); /* #111a29 */
+  --blue-3: rgb(19 39 66); /* #132742 */
+  --blue-4: rgb(18 50 88); /* #123258 */
+  --blue-5: rgb(19 62 111); /* #133e6f */
+  --blue-6: rgb(22 76 138); /* #164c8a */
+  --blue-7: rgb(26 92 171); /* #1a5cab */
+  --blue-8: rgb(30 110 210); /* #1e6ed2 */
+  --blue-9: rgb(0 145 255); /* #0091ff */
+  --blue-10: rgb(59 158 255); /* #3b9eff */
+  --blue-11: rgb(112 184 255); /* #70b8ff */
+  --blue-12: rgb(194 224 255); /* #c2e0ff */
+
+  /* --- GREEN DARK --- */
+  --green-1: rgb(14 21 17); /* #0e1511 */
+  --green-2: rgb(18 27 21); /* #121b15 */
+  --green-3: rgb(19 39 27); /* #13271b */
+  --green-4: rgb(17 50 32); /* #113220 */
+  --green-5: rgb(17 63 39); /* #113f27 */
+  --green-6: rgb(18 77 47); /* #124d2f */
+  --green-7: rgb(20 94 56); /* #145e38 */
+  --green-8: rgb(22 114 65); /* #167241 */
+  --green-9: rgb(48 164 108); /* #30a46c */
+  --green-10: rgb(51 176 116); /* #33b074 */
+  --green-11: rgb(61 214 140); /* #3dd68c */
+  --green-12: rgb(177 241 203); /* #b1f1cb */
+
+  /* --- RED DARK --- */
+  --red-1: rgb(25 17 17); /* #191111 */
+  --red-2: rgb(32 19 20); /* #201314 */
+  --red-3: rgb(49 19 23); /* #311317 */
+  --red-4: rgb(60 18 26); /* #3c121a */
+  --red-5: rgb(73 18 29); /* #49121d */
+  --red-6: rgb(88 19 34); /* #581322 */
+  --red-7: rgb(110 19 41); /* #6e1329 */
+  --red-8: rgb(140 18 48); /* #8c1230 */
+  --red-9: rgb(229 72 77); /* #e5484d */
+  --red-10: rgb(242 85 90); /* #f2555a */
+  --red-11: rgb(255 99 105); /* #ff6369 */
+  --red-12: rgb(255 229 229); /* #ffe5e5 */
+
+  /* --- AMBER DARK --- */
+  --amber-1: rgb(25 18 13); /* #19120d */
+  --amber-2: rgb(34 21 13); /* #22150d */
+  --amber-3: rgb(46 27 13); /* #2e1b0d */
+  --amber-4: rgb(57 32 11); /* #39200b */
+  --amber-5: rgb(70 39 10); /* #46270a */
+  --amber-6: rgb(86 48 10); /* #56300a */
+  --amber-7: rgb(107 60 13); /* #6b3c0d */
+  --amber-8: rgb(137 78 15); /* #894e0f */
+  --amber-9: rgb(255 178 36); /* #ffb224 */
+  --amber-10: rgb(255 192 56); /* #ffc038 */
+  --amber-11: rgb(255 202 86); /* #ffca56 */
+  --amber-12: rgb(254 237 198); /* #feedc6 */
+
+  /* --- INDIGO DARK --- */
+  --indigo-1: rgb(16 17 28); /* #10111c */
+  --indigo-2: rgb(20 22 37); /* #141625 */
+  --indigo-3: rgb(24 32 59); /* #18203b */
+  --indigo-4: rgb(27 40 78); /* #1b284e */
+  --indigo-5: rgb(30 48 98); /* #1e3062 */
+  --indigo-6: rgb(35 58 120); /* #233a78 */
+  --indigo-7: rgb(41 70 148); /* #294694 */
+  --indigo-8: rgb(49 85 184); /* #3155b8 */
+  --indigo-9: rgb(62 99 221); /* #3e63dd */
+  --indigo-10: rgb(83 117 230); /* #5375e6 */
+  --indigo-11: rgb(112 142 245); /* #708ef5 */
+  --indigo-12: rgb(200 212 255); /* #c8d4ff */
+
+  /* --- VIOLET DARK --- */
+  --violet-1: rgb(18 17 26); /* #12111a */
+  --violet-2: rgb(23 21 35); /* #171523 */
+  --violet-3: rgb(33 29 56); /* #211d38 */
+  --violet-4: rgb(41 35 75); /* #29234b */
+  --violet-5: rgb(49 42 92); /* #312a5c */
+  --violet-6: rgb(58 50 111); /* #3a326f */
+  --violet-7: rgb(71 60 136); /* #473c88 */
+  --violet-8: rgb(88 74 168); /* #584aa8 */
+  --violet-9: rgb(110 86 207); /* #6e56cf */
+  --violet-10: rgb(124 102 217); /* #7c66d9 */
+  --violet-11: rgb(186 168 255); /* #baa8ff */
+  --violet-12: rgb(226 220 255); /* #e2dcff */
+
+  /* --- ORANGE DARK --- */
+  --orange-1: rgb(23 18 15); /* #17120f */
+  --orange-2: rgb(30 21 16); /* #1e1510 */
+  --orange-3: rgb(43 27 16); /* #2b1b10 */
+  --orange-4: rgb(57 32 14); /* #39200e */
+  --orange-5: rgb(70 39 13); /* #46270d */
+  --orange-6: rgb(86 48 12); /* #56300c */
+  --orange-7: rgb(108 60 13); /* #6c3c0d */
+  --orange-8: rgb(138 76 12); /* #8a4c0c */
+  --orange-9: rgb(247 104 8); /* #f76808 */
+  --orange-10: rgb(255 122 31); /* #ff7a1f */
+  --orange-11: rgb(255 148 77); /* #ff944d */
+  --orange-12: rgb(254 226 207); /* #fee2cf */
+}
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+
+  &::after,
+  &::before {
+    box-sizing: border-box;
+  }
+}
+
+html {
+  background-color: rgb(var(--color-white));
+}
+
+body {
+  @include scroll-y;
+
+  margin: 0;
+  min-width: var(--min-width);
+  overflow-x: hidden;
+  font-family: var(--font-family), sans-serif;
+  font-size: var(--font-size);
+  font-weight: var(--typography-regular);
+  line-height: var(--line-height);
+  color: var(--slate-12);
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  scrollbar-gutter: stable;
+}
+
+textarea,
+input {
+  caret-color: currentcolor;
+
+  &::placeholder {
+    color: var(--slate-10);
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    padding: 0;
+    appearance: none;
+  }
+
+  &:is(:-webkit-autofill, :autofill),
+  &:is(:-webkit-autofill, :autofill):hover,
+  &:is(:-webkit-autofill, :autofill):focus,
+  &:is(:-webkit-autofill, :autofill):active {
+    background-color: transparent!important;
+    box-shadow: 0 0 0 rem(30px) var(--gray-0) inset !important;
+    -webkit-text-fill-color: var(--slate-12);
+    background-clip: text;
+  }
+
+  &::-webkit-contacts-auto-fill-button,
+  &::-webkit-caps-lock-indicator,
+  &::-webkit-credentials-auto-fill-button,
+  &::-webkit-strong-password-auto-fill-button {
+    display: none !important;
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+  }
+
+  &::-webkit-datetime-edit,
+  &::-webkit-datetime-edit-fields-wrapper,
+  &::-webkit-datetime-edit-text,
+  &::-webkit-datetime-edit-month-field,
+  &::-webkit-datetime-edit-day-field,
+  &::-webkit-datetime-edit-year-field {
+    opacity: 1 !important;
+    color: var(--slate-12) !important;
+  }
+}
+
+input {
+  &[type='datetime-local'],
+  &[type='date'] {
+    width: 100%;
+    font-family: sans-serif;
+    appearance: none;
+    direction: ltr;
+
+    &::-webkit-date-and-time-value {
+      text-align: left;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+}
+
+button,
+a {
+  @include transition;
+}
+
+button {
+  @include reset-button;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+a,
+button,
+input {
+  color: inherit;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+ul,
+ol {
+  @include reset-list;
+}
+
+li {
+  list-style: none;
+}
+
+p {
+  margin-block: 0;
+}
+
+picture,
+img {
+  @include size(100%, auto);
+
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  content-visibility: auto;
+}
+
+svg {
+  display: block;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+menu {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: grid;
+  gap: var(--gap-16);
+  position: relative;
+}
+
+section {
+  position: relative;
+}

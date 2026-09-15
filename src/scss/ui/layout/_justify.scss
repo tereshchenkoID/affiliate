@@ -1,0 +1,16 @@
+$justifies: (
+  'start': flex-start,
+  'center': center,
+  'end': flex-end,
+  'between': space-between,
+  'around': space-around,
+  'evenly': space-evenly,
+);
+
+@mixin l-justifies {
+  @each $key, $val in $justifies {
+    &.justify-#{$key} {
+      justify-content: $val;
+    }
+  }
+}

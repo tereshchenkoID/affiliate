@@ -1,0 +1,15 @@
+$align-map: (
+  'start': flex-start,
+  'center': center,
+  'end': flex-end,
+  'baseline': baseline,
+  'stretch': stretch,
+);
+
+@mixin l-aligns {
+  @each $key, $val in $align-map {
+    &.align-#{$key} {
+      align-items: $val;
+    }
+  }
+}

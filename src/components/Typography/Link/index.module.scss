@@ -1,0 +1,16 @@
+.block {
+  display: inline;
+  text-decoration-thickness: rem(1px);
+  text-underline-offset: rem(3px);
+
+  @include t-aligns;
+  @include t-weights;
+  @include t-sizes;
+  @include t-colors($hover: true);
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

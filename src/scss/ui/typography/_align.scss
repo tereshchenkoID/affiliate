@@ -1,0 +1,13 @@
+$aligns: (
+  'start',
+  'center',
+  'end'
+);
+
+@mixin t-aligns {
+  @each $value in $aligns {
+    &.align-#{$value} {
+      text-align: #{$value};
+    }
+  }
+}

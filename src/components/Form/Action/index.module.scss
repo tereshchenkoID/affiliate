@@ -1,0 +1,130 @@
+@use 'sass:math';
+@use 'sass:map';
+@use 'sass:list';
+
+$sizes: (
+  '1': (height: 24px, padding: 8px, font-size: 12px, icon-size: 14px, radius: var(--border-radius-4)),
+  '2': (height: 32px, padding: 12px, font-size: 14px, icon-size: 16px, radius: var(--border-radius-6)),
+  '3': (height: 40px, padding: 16px, font-size: 16px, icon-size: 18px, radius: var(--border-radius-8)),
+  '4': (height: 48px, padding: 24px, font-size: 18px, icon-size: 20px, radius: var(--border-radius-10)),
+);
+$colors: (
+  'default': (
+    main: var(--slate-12),
+    hover: var(--slate-11),
+    active: var(--slate-12),
+    contrast: var(--gray-0),
+  ),
+  'primary': (
+    main: var(--blue-9),
+    hover: var(--blue-10),
+    active: var(--blue-11),
+    contrast: var(--gray-0),
+  ),
+  'success': (
+    main: var(--green-9),
+    hover: var(--green-10),
+    active: var(--green-11),
+    contrast: var(--gray-0),
+  ),
+  'danger': (
+    main: var(--red-9),
+    hover: var(--red-10),
+    active: var(--red-11),
+    contrast: var(--gray-0),
+  ),
+  'warning': (
+    main: var(--amber-9),
+    hover: var(--amber-10),
+    active: var(--amber-11),
+    contrast: var(--slate-12),
+  ),
+);
+
+.block {
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 0;
+  border: 0;
+  font-family: var(--font-family), sans-serif;
+  font-weight: var(--typography-medium);
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  @each $step, $map in $sizes {
+    &.size-#{$step} {
+      padding-inline: rem(map.get($map, padding));
+      border-radius: rem(map.get($map, radius));
+      height: rem(map.get($map, height));
+      font-size: rem(map.get($map, font-size));
+
+      .icon {
+        @include size(rem(map.get($map, icon-size)));
+      }
+    }
+  }
+
+  @each $col-key, $col-map in $colors {
+    $main: map.get($col-map, main);
+    $hover: map.get($col-map, hover);
+    $active: map.get($col-map, active);
+    $contrast: map.get($col-map, contrast);
+
+    &.color-#{$col-key} {
+      background-color: $main;
+      color: $contrast;
+
+      &:active:not(.disabled),
+      &.active {
+        background-color: $active;
+      }
+
+      @include hover {
+        &:hover:not(.disabled) {
+          background-color: $hover;
+        }
+      }
+    }
+  }
+
+  &.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.content {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: rem(8px);
+  transition: opacity 0.15s ease;
+
+  &.hidden {
+    opacity: 0;
+  }
+}
+
+.spinner {
+  @include flex(center, center);
+
+  position: absolute;
+  inset: 0;
+
+  .icon {
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

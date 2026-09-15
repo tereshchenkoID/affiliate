@@ -1,0 +1,100 @@
+@use 'sass:map';
+
+$spacings: (
+  '0': 0px,
+  '1': 4px,
+  '2': 8px,
+  '3': 12px,
+  '4': 16px,
+  '5': 24px,
+  '6': 32px,
+  '7': 40px,
+  '8': 48px,
+  '9': 64px,
+);
+$utility-properties: (
+  'display': ('none', 'inline', 'inline-block', 'block', 'flex', 'inline-flex', 'grid', 'inline-grid'),
+  'position': ('static', 'relative', 'absolute', 'fixed', 'sticky'),
+  'flex-grow': (0, 1),
+  'flex-shrink': (0, 1),
+);
+$self-map: (
+  'auto': auto,
+  'start': flex-start,
+  'center': center,
+  'end': flex-end,
+  'baseline': baseline,
+  'stretch': stretch,
+);
+$spacing-directions: (
+  '': '',
+  'x': '-inline',
+  'y': '-block',
+  't': '-block-start',
+  'r': '-inline-end',
+  'b': '-block-end',
+  'l': '-inline-start',
+);
+
+.block {
+  @each $prop, $values in $utility-properties {
+    $prefix: $prop;
+
+    @if $prop == 'flex-grow' {
+      $prefix: 'grow';
+    } @else if $prop == 'flex-shrink' {
+      $prefix: 'shrink';
+    } @else if $prop == 'flex-direction' {
+      $prefix: 'direction';
+    } @else if $prop == 'flex-wrap' {
+      $prefix: 'wrap';
+    }
+
+    @each $val in $values {
+      &.#{$prefix}-#{$val} {
+        #{$prop}: #{$val};
+      }
+    }
+  }
+
+  @include l-justifies;
+  @include l-aligns;
+
+  @each $key, $val in $self-map {
+    &.align-self-#{$key} {
+      align-self: $val;
+    }
+  }
+
+  @each $key, $val in $self-map {
+    &.justify-self-#{$key} {
+      justify-self: $val;
+    }
+  }
+
+  @each $step, $val in $spacings {
+    $value: null;
+
+    @if $val == auto {
+      $value: auto;
+    } @else {
+      $value: rem($val);
+    }
+
+    @each $dir-key, $dir-prop in $spacing-directions {
+      &.p#{$dir-key}-#{$step} {
+        padding#{$dir-prop}: $value;
+      }
+
+      &.m#{$dir-key}-#{$step} {
+        margin#{$dir-prop}: $value;
+      }
+    }
+
+    @if $step != 'auto' {
+      &.gap-#{$step} {
+        gap: $value;
+      }
+    }
+  }
+}

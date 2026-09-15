@@ -1,0 +1,116 @@
+@use 'sass:map';
+
+$sizes: (
+  '1': (track-w: 28px, track-h: 16px, thumb: 12px, gap: 6px, font-size: 12px, shift: 12px),
+  '2': (track-w: 36px, track-h: 20px, thumb: 16px, gap: 8px, font-size: 14px, shift: 16px),
+  '3': (track-w: 44px, track-h: 24px, thumb: 20px, gap: 10px, font-size: 16px, shift: 20px),
+);
+
+.block {
+  position: relative;
+  width: fit-content;
+
+  @each $step, $map in $sizes {
+    &.size-#{$step} {
+      .label {
+        gap: rem(map.get($map, gap));
+        font-size: rem(map.get($map, font-size));
+      }
+
+      .track {
+        @include size(rem(map.get($map, track-w)), rem(map.get($map, track-h)));
+
+        border-radius: rem(map.get($map, track-h));
+      }
+
+      .thumb {
+        @include size(rem(map.get($map, thumb)));
+      }
+
+      .input:checked ~ .track .thumb {
+        transform: translateX(rem(map.get($map, shift)));
+      }
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &.error {
+    .track {
+      border-color: var(--red-10);
+    }
+
+    .text {
+      color: var(--red-10);
+
+      * {
+        color: var(--red-10);
+      }
+    }
+  }
+
+  &:not(.error, .disabled) {
+    @include hover {
+      &:hover {
+        .track {
+          border-color: var(--blue-10);
+        }
+      }
+    }
+  }
+}
+
+.label {
+  @include flex(null, center);
+
+  user-select: none;
+  cursor: pointer;
+}
+
+.input {
+  @include size(0);
+
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+
+  &:checked ~ .track {
+    border-color: var(--blue-10);
+    background-color: var(--blue-10);
+
+    .thumb {
+      background-color: var(--gray-0);
+    }
+  }
+}
+
+.track {
+  @include transition;
+  @include flex(null, center);
+
+  flex-shrink: 0;
+  position: relative;
+  padding: rem(1px);
+  border: rem(1px) solid var(--gray-7);
+  background-color: var(--gray-0);
+}
+
+.thumb {
+  @include transition;
+
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: var(--gray-7);
+  transform: translateX(0);
+  will-change: transform;
+}
+
+.text {
+  @include transition;
+
+  text-align: start;
+}

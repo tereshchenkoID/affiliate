@@ -1,0 +1,13 @@
+$weights: (
+  'regular': var(--typography-regular),
+  'medium': var(--typography-medium),
+  'bold': var(--typography-bold),
+);
+
+@mixin t-weights {
+  @each $key, $value in $weights {
+    &.weight-#{$key} {
+      font-weight: $value;
+    }
+  }
+}

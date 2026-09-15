@@ -1,0 +1,71 @@
+@use 'sass:math';
+
+$gaps: (
+  '0': 0px,
+  '1': 4px,
+  '2': 8px,
+  '3': 12px,
+  '4': 16px,
+  '5': 24px,
+  '6': 32px,
+  '7': 40px,
+  '8': 48px,
+  '9': 64px,
+);
+
+.block {
+  &.display-grid {
+    display: grid;
+  }
+
+  &.display-inline-grid {
+    display: inline-grid;
+  }
+
+  // Columns (1–12)
+  @for $i from 1 through 12 {
+    &.cols-#{$i} {
+      grid-template-columns: repeat($i, minmax(0, 1fr));
+    }
+  }
+
+  // Rows (1–6)
+  @for $i from 1 through 6 {
+    &.rows-#{$i} {
+      grid-template-rows: repeat($i, minmax(0, 1fr));
+    }
+  }
+
+  &.flow-row {
+    grid-auto-flow: row;
+  }
+
+  &.flow-column {
+    grid-auto-flow: column;
+  }
+
+  &.flow-row-dense {
+    grid-auto-flow: row dense;
+  }
+
+  &.flow-column-dense {
+    grid-auto-flow: column dense;
+  }
+
+  @include l-justifies;
+  @include l-aligns;
+
+  @each $step, $val in $gaps {
+    &.gap-#{$step} {
+      gap: rem($val);
+    }
+
+    &.gapX-#{$step} {
+      column-gap: rem($val);
+    }
+
+    &.gapY-#{$step} {
+      row-gap: rem($val);
+    }
+  }
+}

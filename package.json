@@ -1,0 +1,44 @@
+{
+  "name": "affiliate",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "stylelint": "stylelint \"src/**/*.scss\"",
+    "stylelint:fix": "stylelint \"src/**/*.scss\" --fix"
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.27.20",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.44.0",
+    "next": "16.3.4",
+    "next-intl": "^4.14.3",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^16.3.4",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "@stylistic/stylelint-plugin": "^5.3.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.4",
+    "eslint-plugin-simple-import-sort": "^14.0.0",
+    "sass": "^1.104.0",
+    "stylelint": "^17.15.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-order": "^8.1.1",
+    "typescript": "^5"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.6.0": true,
+    "@swc/core@1.16.2": true,
+    "unrs-resolver@1.12.2": true
+  }
+}

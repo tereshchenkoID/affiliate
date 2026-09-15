@@ -1,0 +1,6 @@
+.block {
+  @include t-aligns;
+  @include t-weights;
+  @include t-colors;
+  @include t-sizes;
+}

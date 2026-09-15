@@ -1,0 +1,104 @@
+@use 'sass:map';
+
+$sizes: (
+  '1': (box: 16px, radius: var(--border-radius-2), gap: 6px, font-size: 12px, offset: 1px),
+  '2': (box: 20px, radius: var(--border-radius-4), gap: 8px, font-size: 14px, offset: 2px),
+  '3': (box: 24px, radius: var(--border-radius-6), gap: 10px, font-size: 16px, offset: 4px),
+);
+
+.block {
+  position: relative;
+  width: fit-content;
+
+  @each $step, $map in $sizes {
+    &.size-#{$step} {
+      .label {
+        gap: rem(map.get($map, gap));
+        font-size: rem(map.get($map, font-size));
+      }
+
+      .item {
+        @include size(rem(map.get($map, box)));
+
+        border-radius: map.get($map, radius);
+        transform: translateY(rem(map.get($map, offset)));
+      }
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &.error {
+    .item {
+      border-color: var(--red-10);
+    }
+
+    .text {
+      color: var(--red-10);
+
+      * {
+        color: var(--red-10);
+      }
+    }
+  }
+
+  &:not(.error, .disabled) {
+    @include hover {
+      &:hover .item {
+        border-color: var(--blue-10);
+      }
+    }
+  }
+}
+
+.label {
+  @include flex(null, baseline);
+
+  user-select: none;
+  cursor: pointer;
+}
+
+.input {
+  @include size(0);
+
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+
+  &:checked ~ .item {
+    border-color: var(--blue-10);
+    background-color: var(--blue-10);
+    color: var(--gray-0);
+
+    .icon {
+      opacity: 1;
+    }
+  }
+}
+
+.item {
+  @include transition;
+  @include flex(center, center);
+
+  box-sizing: border-box;
+  flex-shrink: 0;
+  border: rem(1px) solid var(--gray-7);
+  background-color: var(--gray-0);
+}
+
+.icon {
+  @include transition;
+
+  opacity: 0;
+  color: var(--gray-0);
+}
+
+.text {
+  @include transition;
+
+  text-align: start;
+}

@@ -1,0 +1,42 @@
+@use '../../abstract/helpers/index' as *;
+@use 'sass:map';
+
+$colors: (
+  'default': (
+    'base': var(--slate-12),
+    'hover': var(--slate-11),
+  ),
+  'primary': (
+    'base': var(--blue-9),
+    'hover': var(--blue-10),
+  ),
+  'success': (
+    'base': var(--green-9),
+    'hover': var(--green-10),
+  ),
+  'danger': (
+    'base': var(--red-9),
+    'hover': var(--red-10),
+  ),
+  'warning': (
+    'base': var(--amber-9),
+    'hover': var(--amber-10),
+  )
+);
+
+@mixin t-colors($hover: false) {
+  @each $key, $val in $colors {
+    &.color-#{$key} {
+      color: map.get($val, 'base');
+
+      @if $hover {
+        @include hover {
+          &:hover {
+            text-decoration: underline;
+            color: map.get($val, 'hover');
+          }
+        }
+      }
+    }
+  }
+}

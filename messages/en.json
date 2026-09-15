@@ -1,0 +1,38 @@
+{
+  "navigation": {
+    "home": "Home",
+    "sign-up": "Sign Up",
+    "sign-in": "Sign In",
+    "forgot-password": "Forgot password"
+  },
+  "name": "Name",
+  "email": "Email",
+  "password": "Password",
+  "affiliate_id": "Affiliate ID",
+  "terms_conditions": "Terms & conditions",
+  "privacy_policy": "Privacy policy",
+  "errors": {
+    "field_required": "Field is required",
+    "letters_required": "Letters only format",
+    "format_email": "Invalid email format",
+    "format_phone": "Invalid phone format",
+    "invalid_postcode": "Invalid postcode format",
+    "minimum": "Minimum number of characters is - {min}",
+    "maximum": "Maximum number of characters is - {max}",
+    "invalid_date": "Invalid date format",
+    "age_restriction": "You must be at least 18 years old",
+    "latin_alphanumeric": "Alphanumeric Latin characters only",
+    "fetch": "Fetch error"
+  },
+  "notification": {
+    "have_account": "Have an account?",
+    "dont_have_account": "Don’t have an account?",
+    "forgot_password": "It’s okay. Just type in your email and we will guide you to recover your password.",
+    "start_now": "Start now",
+    "remember_me": "Remember me?",
+    "send_instruction": "Send me instruction",
+    "affiliate_id": "This ID is sent by you with your traffic to our landing pages so that we can identify you as a source of your traffic.",
+    "affiliate_unique": "This is the affiliate's unique identifier and may appear in tracking links. It cannot be changed later.",
+    "accept_terms": "I accept the <terms>Terms & Conditions</terms> and <privacy>Privacy Policy</privacy>"
+  }
+}
