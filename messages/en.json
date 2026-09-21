@@ -1,9 +1,137 @@
 {
   "navigation": {
     "home": "Home",
-    "sign-up": "Sign Up",
-    "sign-in": "Sign In",
-    "forgot-password": "Forgot password"
+    "sign_up": "Sign Up",
+    "sign_in": "Sign In",
+    "forgot_password": "Forgot password",
+    "dashboard": "Dashboard",
+    "offers": {
+      "title": "Offers",
+      "groups": {
+        "manage": "MANAGE"
+      },
+      "list": "Offer list",
+      "applications": "Offer applications",
+      "smart_links": "Smart links"
+    },
+    "reports": {
+      "title": "Reports",
+      "groups": {
+        "aggregated": "AGGREGATED",
+        "granular": "GRANULAR"
+      },
+      "daily": "Daily report",
+      "overview": "Overview reports",
+      "builder": "Report builder",
+      "funnel": "Funnel report",
+      "clicks": "Clicks",
+      "conversions": "Conversions"
+    },
+    "tools": {
+      "title": "Tools",
+      "groups": {
+        "automation": "AUTOMATION",
+        "logs": "LOGS"
+      },
+      "alerts": "Alerts",
+      "payout_builder": "Payout builder",
+      "traffic_control": "Traffic control",
+      "webhooks": "Webhooks",
+      "activity_logs": "Activity logs",
+      "postbacks_log": "Postbacks tracking log",
+      "conversion_error_log": "Conversion error log"
+    },
+    "marketplaces": {
+      "title": "Marketplace",
+      "affiliates": "Affiliate",
+      "influencers": "Influencers",
+      "agencies": "Agencies",
+      "managers": "Managers"
+    },
+    "integrations": {
+      "title": "Integrations",
+      "popular_templates": "Popular templates",
+      "custom_automations": "Custom automations"
+    },
+    "affiliates": {
+      "title": "Affiliates",
+      "groups": {
+        "manage": "Manage",
+        "billing": "Billing",
+        "tools": "Tools",
+        "communication": "Communication"
+      },
+      "list": "Affiliate list",
+      "managers": "Affiliate managers",
+      "open_balance": "Open balance",
+      "settled_balance": "Settled balance",
+      "coupons": "Coupons",
+      "postbacks": "Affiliate postbacks",
+      "email_message": "Email message",
+      "popup_messages": "Popup messages",
+      "tickets": "Affiliate tickets"
+    },
+    "settings": {
+      "title": "Settings",
+      "home": "Home",
+      "groups": {
+        "general": "General",
+        "tracking": "Tracking",
+        "affiliates": "Affiliates",
+        "integrations": "Integrations",
+        "my_account": "My account"
+      },
+      "general": {
+        "users": "Users",
+        "branding": "Branding",
+        "offer_organization": "Offer organization",
+        "tags": "Tags",
+        "menu_customization": "Menu customization",
+        "system": "System",
+        "currencies": "Currencies",
+        "terms_and_conditions": "Terms & conditions",
+        "privacy_policy": "Privacy policy",
+        "data_anonymization": "Data anonymization",
+        "dashboard_and_reports": "Dashboard and reports",
+        "email_customization": "Email customization",
+        "custom_internal_pages": "Custom internal pages"
+      },
+      "tracking": {
+        "conversion_attribution": "Conversion attribution",
+        "conversion_types": "Conversion types",
+        "authorization": "Authorization",
+        "affiliate_tracking_links": "Affiliate tracking links",
+        "direct_tracking": "Direct tracking",
+        "redirect_tracking": "Redirect tracking",
+        "smart_links": "Smart links",
+        "fraud_prevention": "Fraud prevention",
+        "quality_control": "Quality control"
+      },
+      "affiliates": {
+        "general": "General",
+        "tiers": "Tiers",
+        "payment_methods": "Payment methods",
+        "mlm": "Multi-level marketing (MLM)",
+        "registration": "Registration",
+        "data_visibility": "Data visibility",
+        "communication": "Affiliate communication",
+        "ticketing": "Affiliate ticketing",
+        "alerts": "Affiliate alerts"
+      },
+      "integrations": {
+        "integration_manuals": "Integration manuals",
+        "personal_tokens": "Personal tokens",
+        "payout_automation": "Payout automation",
+        "crypto_payouts": "Crypto payouts",
+        "anura": "Anura",
+        "custom_smtp": "Custom SMTP email server"
+      },
+      "my_account": {
+        "manage_subscription": "Manage subscription",
+        "company_details": "Company details",
+        "mfa": "Multi-factor authentication"
+      }
+    }
   },
   "name": "Name",
   "email": "Email",
@@ -11,6 +139,26 @@
   "affiliate_id": "Affiliate ID",
   "terms_conditions": "Terms & conditions",
   "privacy_policy": "Privacy policy",
+  "old_password": "Old password",
+  "new_password": "New password",
+  "repeat_password": "Repeat password",
+  "save": "Save",
+  "cancel": "Cancel",
+  "theme": "Theme",
+  "light": "Light",
+  "dark": "Dark",
+  "system": "System",
+  "language": "Language",
+  "log_out": "Log out",
+  "report_bug": "Report a bug",
+  "request_feature": "Request a feature",
+  "multifactor_authentication": "Multi-factor authentication",
+  "my_account": "My Account",
+  "project": "Project",
+  "select_value": "Select value",
+  "empty": "Empty",
+  "company_website": "Your company website",
+  "timezone": "Timezone",
   "errors": {
     "field_required": "Field is required",
     "letters_required": "Letters only format",
@@ -22,7 +170,8 @@
     "invalid_date": "Invalid date format",
     "age_restriction": "You must be at least 18 years old",
     "latin_alphanumeric": "Alphanumeric Latin characters only",
-    "fetch": "Fetch error"
+    "fetch": "Fetch error",
+    "passwords_do_not_match": "Passwords do not match"
   },
   "notification": {
     "have_account": "Have an account?",
@@ -33,6 +182,14 @@
     "send_instruction": "Send me instruction",
     "affiliate_id": "This ID is sent by you with your traffic to our landing pages so that we can identify you as a source of your traffic.",
     "affiliate_unique": "This is the affiliate's unique identifier and may appear in tracking links. It cannot be changed later.",
-    "accept_terms": "I accept the <terms>Terms & Conditions</terms> and <privacy>Privacy Policy</privacy>"
+    "accept_terms": "I accept the <terms>Terms & Conditions</terms> and <privacy>Privacy Policy</privacy>",
+    "collapse_sidebar": "Collapse sidebar",
+    "expand_sidebar": "Expand sidebar",
+    "language_change": "Changing this setting will change the language for you only. To set a new default language for the entire system, follow this link:",
+    "system_default": "System default language",
+    "change_language": "Change language",
+    "change_theme": "Change theme",
+    "change_password": "Change password",
+    "use_default_language": "Use default language"
   }
 }

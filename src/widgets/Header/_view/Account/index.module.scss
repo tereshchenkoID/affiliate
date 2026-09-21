@@ -1,0 +1,12 @@
+.block {
+  @include scroll-y;
+
+  position: fixed;
+  inset-block: rem(56px) rem(8px);
+  inset-inline-end: 0;
+  border-radius: rem(8px);
+  width: rem(260px);
+  background-color: var(--gray-2);
+  box-shadow: 0 rem(4px) rem(12px) color-alpha(var(--slate-8), 0.8), 0 rem(1px) rem(3px) color-alpha(var(--slate-8), 0.4);
+  z-index: $z-index-8;
+}

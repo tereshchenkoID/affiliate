@@ -1,0 +1,41 @@
+@use 'sass:map';
+
+.separator {
+  flex-shrink: 0;
+  margin: 0;
+  border: none;
+  color: unset;
+
+  @each $color, $map in $colors {
+    &[data-color='#{$color}'] {
+      background-color: #{map.get($map, 'main')};
+    }
+  }
+
+  &[data-orientation='horizontal'] {
+    @include size(100%, rem(1px));
+
+    &[data-size='2'] {
+      height: rem(2px);
+    }
+
+    &[data-size='3'] {
+      height: rem(4px);
+    }
+  }
+
+  &[data-orientation='vertical'] {
+    @include size(rem(1px), 100%);
+
+    display: inline-block;
+    align-self: stretch;
+
+    &[data-size='2'] {
+      width: rem(2px);
+    }
+
+    &[data-size='3'] {
+      width: rem(4px);
+    }
+  }
+}

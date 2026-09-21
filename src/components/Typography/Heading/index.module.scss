@@ -1,13 +1,20 @@
 .block {
+  @include t-aligns;
+  @include t-weights;
+  @include t-colors;
+  @include t-sizes;
+
   margin: 0;
   padding: 0;
   font-family: var(--font-family-alt), sans-serif;
   font-style: normal;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
-
-  @include t-aligns;
-  @include t-weights;
-  @include t-colors;
-  @include t-sizes;
+  font-size: var(--typography-size);
+  font-weight: var(--typography-weight);
+  line-height: var(--typography-lh);
+  text-align: var(--typography-align);
+  text-transform: var(--typography-transform);
+  color: var(--typography-color);
+  letter-spacing: var(--typography-ls);
 }

@@ -1,7 +1,20 @@
-import Header from './section'
+import { getCachedUser, getSettings } from '@/app/actions/static'
 
-export default function HeaderLayout() {
+import Section from './_view'
+
+export default async function HeaderLayout() {
+  const [
+    settings,
+    user,
+  ] = await Promise.all([
+    getSettings(),
+    getCachedUser()
+  ])
+
   return (
-    <Header />
+    <Section
+      settings={settings}
+      user={user}
+    />
   )
 }

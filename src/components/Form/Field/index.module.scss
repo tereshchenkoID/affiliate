@@ -75,13 +75,13 @@
   background-color: var(--gray-0);
   overflow: hidden;
   font-size: var(--font-size);
-  text-align: left;
+  text-align: start;
 }
 
 .message {
   margin-block-start: rem(2px);
   font-size: rem(12px);
-  text-align: left;
+  text-align: start;
 
   &.error {
     color: var(--red-10);

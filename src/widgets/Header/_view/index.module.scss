@@ -1,0 +1,5 @@
+.block {
+  @include flex(space-between, center);
+
+  padding: rem(8px);
+}

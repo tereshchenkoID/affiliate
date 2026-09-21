@@ -5,7 +5,15 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import clsx from 'clsx'
 
+import { getCachedUser } from '@/app/actions/static'
+
+import { UserProvider } from '@/context/UserContext'
+
+import Modals from '@/widgets/Modals'
+
 import './layout.scss'
+
+import { User } from '@/types/user'
 
 const roboto: NextFontWithVariable = Roboto({
   weight: ['400', '500', '700'],
@@ -32,7 +40,11 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children, params }: LayoutProps<'/[locale]'>) {
   const { locale } = await params
-  const messages = await getMessages({ locale })
+
+  const [messages, user] = await Promise.all([
+    getMessages({ locale }),
+    getCachedUser(),
+  ])
 
   return (
     <html
@@ -43,13 +55,17 @@ export default async function RootLayout({ children, params }: LayoutProps<'/[lo
           montserrat.variable,
         )
       }
+      data-theme={user?.theme?.value || 'dark'}
     >
       <body>
         <NextIntlClientProvider
           messages={messages}
           locale={locale}
         >
-          {children}
+          <UserProvider initialUser={user as User}>
+            {children}
+            <Modals />
+          </UserProvider>
         </NextIntlClientProvider>
       </body>
     </html>

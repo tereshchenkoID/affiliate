@@ -14,6 +14,10 @@
   --border-radius-10: 0.625rem;
   --border-radius-16: 1rem;
 
+  /* --- Default --- */
+  --white: rgb(255 255 255);
+  --black: rgb(0 0 0);
+
   /* --- GRAY (Standard Neutral) --- */
   --gray-0: rgb(255 255 255); /* #ffffff */
   --gray-1: rgb(252 252 253); /* #fcfcfd */
@@ -282,7 +286,7 @@
 }
 
 html {
-  background-color: rgb(var(--color-white));
+  background-color: var(--gray-1);
 }
 
 body {
@@ -430,8 +434,9 @@ menu {
 
 main {
   display: grid;
-  gap: var(--gap-16);
+  grid-template-rows: rem(56px) 1fr;
   position: relative;
+  height: 100lvh;
 }
 
 section {

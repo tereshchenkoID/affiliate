@@ -11,7 +11,7 @@ const PROTECTED_PREFIXES = ['user/', 'profile/'] as const
 const MUTATING_METHODS: readonly HttpMethod[] = ['POST', 'PUT', 'PATCH']
 const BODY_METHODS: readonly HttpMethod[] = ['POST', 'PUT', 'PATCH', 'DELETE'] as const
 const QUERY_METHODS: readonly HttpMethod[] = ['GET', 'DELETE'] as const
-const DEFAULT_RATE_LIMIT = { max: 30, windowMs: 60_000 } as const
+const DEFAULT_RATE_LIMIT = { max: 100, windowMs: 60_000 } as const
 
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
 
@@ -101,7 +101,7 @@ export const apiRequest = async <T = unknown>(
     cache,
     next,
   }: ApiRequestOptions = {}
-): Promise<T | ApiErrorResponse | null> => {
+) => {
   const cookieStore = await cookies()
   const headersList = await headers()
 
@@ -117,7 +117,8 @@ export const apiRequest = async <T = unknown>(
   const isProtected = PROTECTED_PREFIXES.some((prefix) => endpoint.startsWith(prefix))
   if (isProtected && !token) return null
 
-  let url = new URL(`${process.env.API_BASE_URL}/${endpoint}`)
+  let url = new URL(`${process.env.API_BASE_URL}/api/${endpoint}.json`)
+  // let url = new URL(`${process.env.API_BASE_URL}/${endpoint}`)
 
   const options: RequestInit = {
     method,
@@ -155,7 +156,7 @@ export const apiRequest = async <T = unknown>(
       })
     }
 
-    return json as T
+    return json
   } catch (error: unknown) {
     if (isNextRedirectError(error)) throw error
 

@@ -24,7 +24,7 @@ export interface GridProps extends HTMLAttributes<HTMLElement> {
   className?: string
 }
 
-export const Grid = forwardRef<HTMLElement, GridProps>(({
+const Grid = forwardRef<HTMLElement, GridProps>(({
   as: Tag = 'div',
   display = 'grid',
   columns,
@@ -76,3 +76,5 @@ export const Grid = forwardRef<HTMLElement, GridProps>(({
 })
 
 Grid.displayName = 'Grid'
+
+export default Grid

@@ -11,7 +11,6 @@ import { useValidations } from '@/hooks/useValidations'
 import Action from '@/components/Form/Action'
 import Checkbox from '@/components/Form/Checkbox'
 import Field from '@/components/Form/Field'
-import Switch from '@/components/Form/Switch'
 import Box from '@/components/Layout/Box'
 import Callout from '@/components/Overlay/Callout'
 import Heading from '@/components/Typography/Heading'
@@ -129,7 +128,7 @@ const Section = () => {
           onValidate={(err) => setFieldError('password', err)}
           error={errors.password}
         />
-        <Text as="p" size="1">
+        <Text as="p" size="3" color="gray">
           {t('notification.affiliate_id')}
         </Text>
         <Field
@@ -157,11 +156,11 @@ const Section = () => {
           onValidate={err => setFieldError('terms', err)}
           error={errors?.terms}
         >
-          <Text as="p">
+          <Text as="p" size="4">
             {
               t.rich('notification.accept_terms', {
-                terms: (chunks) => <Link href={AUTH['terms']?.url}>{chunks}</Link>,
-                privacy: (chunks) => <Link href={AUTH['privacy']?.url}>{chunks}</Link>,
+                terms: (chunks) => <Link href={AUTH['terms']?.url} size="4">{chunks}</Link>,
+                privacy: (chunks) => <Link href={AUTH['privacy']?.url} size="4">{chunks}</Link>,
               })
             }
           </Text>

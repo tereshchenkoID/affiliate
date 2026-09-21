@@ -1,0 +1,11 @@
+@use 'sass:list';
+
+$transforms: (uppercase, lowercase, capitalize, normal, none);
+
+@mixin t-transform {
+  @each $transform in $transforms {
+    &.transform-#{$transform} {
+      --typography-transform: #{$transform};
+    }
+  }
+}

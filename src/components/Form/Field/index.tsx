@@ -11,9 +11,10 @@ import React, {
   useState,
 } from 'react'
 import clsx from 'clsx'
-import { Eye, EyeOff, X } from 'lucide-react'
 
 import { runRules, type ValidationRule } from '@/helpers/rules'
+
+import Icon from '@/components/Overlay/Icon'
 
 import style from './index.module.scss'
 
@@ -26,7 +27,7 @@ export interface FieldProps {
   onChange?: (value: string) => void
   onValidate?: (error: string | null) => void
   onBlur?: (e: FocusEvent<HTMLInputElement>) => void
-  classes?: string[] | null
+  className?: string
   isDisabled?: boolean
   isRequired?: boolean
   isClear?: boolean
@@ -46,7 +47,7 @@ const Field = forwardRef<HTMLInputElement, FieldProps>(({
   onChange,
   onValidate,
   onBlur: externalOnBlur,
-  classes = null,
+  className,
   isDisabled = false,
   isRequired = false,
   isClear = true,
@@ -115,7 +116,7 @@ const Field = forwardRef<HTMLInputElement, FieldProps>(({
             [style.password]: visibility,
             [style.error]: showError,
           },
-          classes?.map((el) => style[el] || el)
+          className
         )
       }
     >
@@ -153,7 +154,7 @@ const Field = forwardRef<HTMLInputElement, FieldProps>(({
               aria-label="Clear"
               title="Clear"
             >
-              <X size={16} />
+              <Icon name="x" size="16" />
             </button>
           }
           {
@@ -165,13 +166,10 @@ const Field = forwardRef<HTMLInputElement, FieldProps>(({
               aria-label="Visibility"
               title="Visibility"
             >
-              {
-                show
-                  ?
-                    <Eye size={16}/>
-                  :
-                    <EyeOff size={16}/>
-              }
+              <Icon
+                name={show ? 'eye' : 'eye-off'}
+                size="16"
+              />
             </button>
           }
         </div>

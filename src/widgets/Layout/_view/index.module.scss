@@ -1,0 +1,8 @@
+.block {
+  display: grid;
+  grid-template-columns: rem(60px) 1fr;
+  gap: rem(8px);
+  padding-block-end: rem(8px);
+  padding-inline: rem(8px);
+  overflow: hidden;
+}

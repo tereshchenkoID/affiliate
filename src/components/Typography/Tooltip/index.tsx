@@ -24,7 +24,7 @@ interface TooltipProps {
 
 import style from './index.module.scss'
 
-export const Tooltip = ({
+const Tooltip = ({
   content,
   children,
   placement = 'top',
@@ -73,7 +73,6 @@ export const Tooltip = ({
       >
         {children}
       </span>
-
       {
         show &&
         <FloatingPortal>
@@ -90,3 +89,5 @@ export const Tooltip = ({
     </>
   )
 }
+
+export default Tooltip

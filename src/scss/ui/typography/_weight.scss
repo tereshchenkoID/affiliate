@@ -7,7 +7,7 @@ $weights: (
 @mixin t-weights {
   @each $key, $value in $weights {
     &.weight-#{$key} {
-      font-weight: $value;
+      --typography-weight: #{$value};
     }
   }
 }

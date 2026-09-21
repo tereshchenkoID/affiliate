@@ -7,7 +7,7 @@ $aligns: (
 @mixin t-aligns {
   @each $value in $aligns {
     &.align-#{$value} {
-      text-align: #{$value};
+      --typography-align: #{$value};
     }
   }
 }

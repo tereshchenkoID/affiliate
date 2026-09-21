@@ -104,6 +104,14 @@ export const useValidations = () => {
       return v.length <= max ? null : t(msg, { max })
     },
 
+    match: (targetValue: unknown, msg = 'errors.passwords_do_not_match'): ValidationRule => (value) => {
+      const v = normalize(value)
+      if (!v) return null
+
+      const target = normalize(targetValue)
+      return v === target ? null : t(msg)
+    },
+
     postcode: (
       msg = 'errors.invalid_postcode',
       regex = /^\d{4,10}$/

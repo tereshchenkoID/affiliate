@@ -7,7 +7,9 @@ import style from './index.module.scss'
 const Logo = () => {
   return (
     <Link
-      href={DASHBOARD.home.url}
+      href={{
+        pathname: DASHBOARD.home.url
+      }}
       className={style.block}
     >
       <span className={style.left}>Test</span>

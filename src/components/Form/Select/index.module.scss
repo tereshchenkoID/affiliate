@@ -1,0 +1,129 @@
+.block {
+  position: relative;
+  width: 100%;
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &.chosen,
+  &.active {
+    .label {
+      transform: translateY(rem(-18px));
+      font-size: rem(10px);
+    }
+
+    .selected {
+      border-color: var(--blue-9);
+    }
+  }
+
+  &.active {
+    .arrow {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.error {
+    .label,
+    .selected,
+    .arrow {
+      color: var(--red-10);
+    }
+
+    .selected {
+      border-color: var(--red-10);
+    }
+  }
+
+  &:not(.error, .disabled) {
+    @include hover {
+      &:hover .selected {
+        border-color: var(--blue-10);
+      }
+    }
+  }
+}
+
+.selected {
+  @include size(100%, rem(42px));
+  @include flex(space-between, center);
+  @include transition;
+
+  position: relative;
+  padding-inline: rem(12px);
+  border: rem(1px) solid var(--gray-6);
+  border-radius: var(--border-radius-6);
+  background-color: var(--gray-0);
+  text-align: start;
+}
+
+.label {
+  @include transition;
+
+  position: absolute;
+  inset-block-start: rem(12px);
+  inset-inline-start: rem(12px);
+  padding-inline: rem(2px);
+  background-color: var(--gray-0);
+  font-size: rem(14px);
+  color: var(--gray-10);
+  pointer-events: none;
+
+  span {
+    margin-inline-start: rem(4px);
+    color: var(--red-10);
+  }
+}
+
+.arrow {
+  @include transition;
+
+  flex-shrink: 0;
+}
+
+.dropdown {
+  border: rem(1px) solid var(--gray-5);
+  border-radius: var(--border-radius-8);
+  background-color: var(--gray-0);
+  box-shadow: 0 rem(4px) rem(12px) color-alpha(var(--slate-8), 0.8), 0 rem(1px) rem(3px) color-alpha(var(--slate-8), 0.4);
+  overflow: hidden;
+}
+
+.head {
+  border-bottom: rem(1px) solid var(--gray-4);
+}
+
+.input {
+  @include transition(border-color);
+  @include size(100%, rem(34px));
+
+  padding-inline: rem(8px);
+  border: rem(1px) solid var(--gray-6);
+  border-radius: var(--border-radius-4);
+  background-color: var(--gray-1);
+  font-size: rem(13px);
+  color: var(--slate-12);
+
+  &:focus {
+    border-color: var(--blue-10);
+  }
+}
+
+.list {
+  @include scroll-y;
+}
+
+.empty {
+  word-break: break-all;
+}
+
+.message {
+  margin-block-start: rem(2px);
+  font-size: rem(12px);
+
+  &.error {
+    color: var(--red-10);
+  }
+}

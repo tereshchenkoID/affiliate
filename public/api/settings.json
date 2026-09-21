@@ -1,0 +1,38 @@
+{
+  "name": "Affiliate",
+  "short_name": "affiliate",
+  "themes": [
+    {
+      "value": "light",
+      "label": "Light"
+    },
+    {
+      "value": "dark",
+      "label": "Dark"
+    },
+    {
+      "value": "system",
+      "label": "System"
+    }
+  ],
+  "languages": [
+    {
+      "value": "en",
+      "label": "English"
+    },
+    {
+      "value": "fr",
+      "label": "Francais"
+    }
+  ],
+  "timezone": [
+    {
+      "value": "1",
+      "label": "GMT+03:00 – Europe/Istanbul"
+    },
+    {
+      "value": "2",
+      "label": "GMT+03:00 – Europe/Kyiv"
+    }
+  ]
+}

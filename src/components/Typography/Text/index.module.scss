@@ -3,4 +3,13 @@
   @include t-weights;
   @include t-colors;
   @include t-sizes;
+  @include t-transform;
+
+  font-size: var(--typography-size);
+  font-weight: var(--typography-weight);
+  line-height: var(--typography-lh);
+  text-align: var(--typography-align);
+  text-transform: var(--typography-transform);
+  color: var(--typography-color);
+  letter-spacing: var(--typography-ls);
 }

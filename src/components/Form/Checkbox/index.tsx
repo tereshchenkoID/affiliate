@@ -8,9 +8,10 @@ import {
   useState,
 } from 'react'
 import clsx from 'clsx'
-import { Check } from 'lucide-react'
 
 import { runRules, type ValidationRule } from '@/helpers/rules'
+
+import Icon from '@/components/Overlay/Icon'
 
 import style from './index.module.scss'
 
@@ -99,7 +100,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({
           {...rest}
         />
         <span className={style.item}>
-          <Check size={iconSizes[size]} className={style.icon} />
+          <Icon name="check" size={iconSizes[size]} className={style.icon} />
         </span>
         {
           content &&

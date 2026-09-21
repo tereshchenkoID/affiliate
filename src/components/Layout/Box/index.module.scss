@@ -11,22 +11,10 @@ $spacings: (
   '7': 40px,
   '8': 48px,
   '9': 64px,
+  'half': 2px,
+  'auto': 'auto',
 );
-$utility-properties: (
-  'display': ('none', 'inline', 'inline-block', 'block', 'flex', 'inline-flex', 'grid', 'inline-grid'),
-  'position': ('static', 'relative', 'absolute', 'fixed', 'sticky'),
-  'flex-grow': (0, 1),
-  'flex-shrink': (0, 1),
-);
-$self-map: (
-  'auto': auto,
-  'start': flex-start,
-  'center': center,
-  'end': flex-end,
-  'baseline': baseline,
-  'stretch': stretch,
-);
-$spacing-directions: (
+$directions: (
   '': '',
   'x': '-inline',
   'y': '-block',
@@ -35,9 +23,27 @@ $spacing-directions: (
   'b': '-block-end',
   'l': '-inline-start',
 );
+$utility: (
+  'display': ('none', 'inline', 'inline-block', 'block', 'flex', 'inline-flex', 'grid', 'inline-grid'),
+  'position': ('static', 'relative', 'absolute', 'fixed', 'sticky'),
+  'flex-direction': ('row', 'row-reverse', 'column', 'column-reverse'),
+  'flex-grow': (0, 1),
+  'flex-shrink': (0, 1),
+);
+$self: (
+  'auto': auto,
+  'start': flex-start,
+  'center': center,
+  'end': flex-end,
+  'baseline': baseline,
+  'stretch': stretch,
+);
 
 .block {
-  @each $prop, $values in $utility-properties {
+  @include l-justifies;
+  @include l-aligns;
+
+  @each $prop, $values in $utility {
     $prefix: $prop;
 
     @if $prop == 'flex-grow' {
@@ -57,16 +63,13 @@ $spacing-directions: (
     }
   }
 
-  @include l-justifies;
-  @include l-aligns;
-
-  @each $key, $val in $self-map {
+  @each $key, $val in $self {
     &.align-self-#{$key} {
       align-self: $val;
     }
   }
 
-  @each $key, $val in $self-map {
+  @each $key, $val in $self {
     &.justify-self-#{$key} {
       justify-self: $val;
     }
@@ -81,7 +84,7 @@ $spacing-directions: (
       $value: rem($val);
     }
 
-    @each $dir-key, $dir-prop in $spacing-directions {
+    @each $dir-key, $dir-prop in $directions {
       &.p#{$dir-key}-#{$step} {
         padding#{$dir-prop}: $value;
       }

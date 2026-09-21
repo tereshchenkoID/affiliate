@@ -1,57 +1,99 @@
 @use 'sass:map';
 
-$sizes: (
-  '1': (padding: rem(6px) rem(10px), font-size: 12px, icon-size: 16px, gap: 8px, radius: var(--border-radius-6)),
-  '2': (padding: rem(10px) rem(14px), font-size: 14px, icon-size: 18px, gap: 10px, radius: var(--border-radius-8)),
-  '3': (padding: rem(14px) rem(18px), font-size: 16px, icon-size: 20px, gap: 12px, radius: var(--border-radius-10)),
+$callout-sizes: (
+  1: (
+    padding: rem(6px) rem(10px),
+    font-size: 12px,
+    icon-size: 16px,
+    gap: 8px,
+    radius: var(--border-radius-6)
+  ),
+  2: (
+    padding: rem(10px) rem(14px),
+    font-size: 14px,
+    icon-size: 18px,
+    gap: 10px,
+    radius: var(--border-radius-8)
+  ),
+  3: (
+    padding: rem(14px) rem(18px),
+    font-size: 16px,
+    icon-size: 20px,
+    gap: 12px,
+    radius: var(--border-radius-10)
+  ),
 );
-$colors: (
-  'default': (main: var(--slate-9), bg: var(--slate-3), border: var(--slate-6), text: var(--slate-12)),
-  'primary': (main: var(--blue-9), bg: var(--blue-3), border: var(--blue-6), text: var(--blue-12)),
-  'success': (main: var(--green-9), bg: var(--green-3), border: var(--green-6), text: var(--green-12)),
-  'warning': (main: var(--amber-9), bg: var(--amber-3), border: var(--amber-6), text: var(--amber-12)),
-  'danger': (main: var(--red-9), bg: var(--red-3), border: var(--red-6), text: var(--red-12)),
+$callout-colors: (
+  'default': (
+    main: var(--slate-9),
+    bg: var(--slate-3),
+    border: var(--slate-6),
+    text: var(--slate-12)
+  ),
+  'primary': (
+    main: var(--blue-9),
+    bg: var(--blue-3),
+    border: var(--blue-6),
+    text: var(--blue-12)
+  ),
+  'success': (
+    main: var(--green-9),
+    bg: var(--green-3),
+    border: var(--green-6),
+    text: var(--green-12)
+  ),
+  'warning': (
+    main: var(--amber-9),
+    bg: var(--amber-3),
+    border: var(--amber-6),
+    text: var(--amber-12)
+  ),
+  'danger': (
+    main: var(--red-9),
+    bg: var(--red-3),
+    border: var(--red-6),
+    text: var(--red-12)
+  ),
 );
 
 .block {
   @include flex(null, flex-start);
 
+  gap: var(--alert-gap);
+  padding: var(--alert-padding);
+  border: rem(1px) solid var(--alert-border);
+  border-radius: var(--alert-radius);
   width: 100%;
+  background-color: var(--alert-bg);
+  font-size: var(--alert-font-size);
+  color: var(--alert-text);
 
-  @each $step, $map in $sizes {
+  @each $step, $map in $callout-sizes {
     &.size-#{$step} {
-      gap: rem(map.get($map, gap));
-      padding: map.get($map, padding);
-      border-radius: map.get($map, radius);
-      font-size: rem(map.get($map, font-size));
-
-      .icon {
-        @include size(rem(map.get($map, icon-size)));
-      }
+      --alert-padding: #{map.get($map, padding)};
+      --alert-font-size: #{rem(map.get($map, font-size))};
+      --alert-gap: #{rem(map.get($map, gap))};
+      --alert-radius: #{map.get($map, radius)};
+      --alert-icon-size: #{rem(map.get($map, icon-size))};
     }
   }
 
-  @each $col-key, $col-map in $colors {
-    $main: map.get($col-map, main);
-    $bg: map.get($col-map, bg);
-    $border: map.get($col-map, border);
-    $text: map.get($col-map, text);
-
+  @each $col-key, $col-map in $callout-colors {
     &.color-#{$col-key} {
-      border: rem(1px) solid $border;
-      background-color: $bg;
-      color: $text;
-
-      .icon {
-        color: $main;
-      }
+      --alert-bg: #{map.get($col-map, bg)};
+      --alert-border: #{map.get($col-map, border)};
+      --alert-text: #{map.get($col-map, text)};
+      --alert-icon-color: #{map.get($col-map, main)};
     }
   }
 }
 
 .icon {
+  @include size(var(--alert-icon-size));
+
   flex-shrink: 0;
   margin-top: rem(2px);
+  color: var(--alert-icon-color);
 }
 
 .content {

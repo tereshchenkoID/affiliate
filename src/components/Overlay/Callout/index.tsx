@@ -1,5 +1,3 @@
-'use client'
-
 import { forwardRef, type HTMLAttributes, type ReactNode } from 'react'
 import clsx from 'clsx'
 import {
@@ -15,8 +13,11 @@ import style from './index.module.scss'
 import type { UIColor, UISize } from '@/types/ui'
 
 const DEFAULT_ICONS: Record<UIColor, LucideIcon> = {
+  muted: Info,
   default: Info,
   primary: Info,
+  gray: Info,
+  transparent: Info,
   success: CheckCircle2,
   warning: AlertTriangle,
   danger: AlertCircle,

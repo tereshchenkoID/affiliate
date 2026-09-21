@@ -21,9 +21,9 @@ export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
 
 const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(({
   as: Tag = 'h1',
-  size = '6',
+  size = '7',
   weight = 'bold',
-  align,
+  align = 'start',
   color = 'default',
   children,
   className,

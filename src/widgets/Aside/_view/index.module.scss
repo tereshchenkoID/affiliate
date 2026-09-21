@@ -1,0 +1,50 @@
+.block {
+  @include transition;
+
+  position: relative;
+  border-radius: var(--border-radius-16);
+  width: 100%;
+  background-color: var(--blue-10);
+  overflow: hidden;
+  z-index: $z-index-1;
+  color: var(--white);
+
+  @include hover {
+    &:hover {
+      width: rem(200px);
+    }
+  }
+}
+
+.menu {
+  @include scroll-y;
+  @include flex(null, null, column);
+
+  gap: rem(4px);
+  padding: rem(10px);
+  height: 100%;
+}
+
+.link {
+  display: grid;
+  flex-shrink: 0;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: rem(10px);
+  padding-inline: rem(10px);
+  border-radius: var(--border-radius-8);
+  height: rem(40px);
+  overflow: hidden;
+  font-size: rem(14px);
+  white-space: nowrap;
+
+  &:last-child {
+    margin-top: auto;
+  }
+
+  @include hover {
+    &:hover {
+      background-color: color-alpha(var(--white), 0.2);
+    }
+  }
+}

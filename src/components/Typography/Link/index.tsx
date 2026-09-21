@@ -32,9 +32,9 @@ export interface LinkProps
 const Link = forwardRef<HTMLAnchorElement, LinkProps>(({
   href,
   as,
-  size = '3',
+  size = '5',
   weight = 'regular',
-  align,
+  align = 'start',
   color = 'primary',
   disabled = false,
   children,

@@ -1,37 +1,41 @@
 @use 'sass:map';
 
-$sizes: (
-  '1': (track-w: 28px, track-h: 16px, thumb: 12px, gap: 6px, font-size: 12px, shift: 12px),
-  '2': (track-w: 36px, track-h: 20px, thumb: 16px, gap: 8px, font-size: 14px, shift: 16px),
-  '3': (track-w: 44px, track-h: 24px, thumb: 20px, gap: 10px, font-size: 16px, shift: 20px),
+$switch-sizes: (
+  1: (
+    width: 28px,
+    height: 16px,
+    thumb: 12px,
+    gap: 6px,
+    font-size: 12px,
+    shift: 12px
+  ),
+  2: (
+    width: 36px,
+    height: 20px,
+    thumb: 16px,
+    gap: 8px,
+    font-size: 14px,
+    shift: 16px
+  ),
+  3: (
+    width: 44px,
+    height: 24px,
+    thumb: 20px,
+    gap: 10px,
+    font-size: 16px,
+    shift: 20px
+  ),
 );
 
 .block {
+  --switch-track-bg: var(--gray-0);
+  --switch-track-border: var(--gray-7);
+  --switch-thumb-bg: var(--gray-7);
+  --switch-thumb-pos: 0;
+  --switch-text-color: inherit;
+
   position: relative;
   width: fit-content;
-
-  @each $step, $map in $sizes {
-    &.size-#{$step} {
-      .label {
-        gap: rem(map.get($map, gap));
-        font-size: rem(map.get($map, font-size));
-      }
-
-      .track {
-        @include size(rem(map.get($map, track-w)), rem(map.get($map, track-h)));
-
-        border-radius: rem(map.get($map, track-h));
-      }
-
-      .thumb {
-        @include size(rem(map.get($map, thumb)));
-      }
-
-      .input:checked ~ .track .thumb {
-        transform: translateX(rem(map.get($map, shift)));
-      }
-    }
-  }
 
   &.disabled {
     opacity: 0.5;
@@ -39,16 +43,11 @@ $sizes: (
   }
 
   &.error {
-    .track {
-      border-color: var(--red-10);
-    }
+    --switch-track-border: var(--red-10);
+    --switch-text-color: var(--red-10);
 
-    .text {
-      color: var(--red-10);
-
-      * {
-        color: var(--red-10);
-      }
+    * {
+      color: var(--checkbox-color);
     }
   }
 
@@ -56,9 +55,20 @@ $sizes: (
     @include hover {
       &:hover {
         .track {
-          border-color: var(--blue-10);
+          --switch-track-border: var(--blue-10);
         }
       }
+    }
+  }
+
+  @each $step, $map in $switch-sizes {
+    &.size-#{$step} {
+      --switch-width: #{rem(map.get($map, width))};
+      --switch-height: #{rem(map.get($map, height))};
+      --switch-thumb: #{rem(map.get($map, thumb))};
+      --switch-gap: #{rem(map.get($map, gap))};
+      --switch-font-size: #{rem(map.get($map, font-size))};
+      --switch-shift: #{rem(map.get($map, shift))};
     }
   }
 }
@@ -67,6 +77,8 @@ $sizes: (
   @include flex(null, center);
 
   user-select: none;
+  gap: var(--switch-gap);
+  font-size: var(--switch-font-size);
   cursor: pointer;
 }
 
@@ -79,33 +91,34 @@ $sizes: (
   opacity: 0;
 
   &:checked ~ .track {
-    border-color: var(--blue-10);
-    background-color: var(--blue-10);
-
-    .thumb {
-      background-color: var(--gray-0);
-    }
+    --switch-track-bg: var(--blue-10);
+    --switch-track-border: var(--blue-10);
+    --switch-thumb-bg: var(--gray-0);
+    --switch-thumb-pos: var(--switch-shift);
   }
 }
 
 .track {
   @include transition;
   @include flex(null, center);
+  @include size(var(--switch-width), var(--switch-height));
 
   flex-shrink: 0;
   position: relative;
   padding: rem(1px);
-  border: rem(1px) solid var(--gray-7);
-  background-color: var(--gray-0);
+  border: rem(1px) solid var(--switch-track-border);
+  border-radius: var(--switch-height);
+  background-color: var(--switch-track-bg);
 }
 
 .thumb {
   @include transition;
+  @include size(var(--switch-thumb));
 
   flex-shrink: 0;
   border-radius: 50%;
-  background-color: var(--gray-7);
-  transform: translateX(0);
+  background-color: var(--switch-thumb-bg);
+  transform: translateX(var(--switch-thumb-pos));
   will-change: transform;
 }
 
@@ -113,4 +126,5 @@ $sizes: (
   @include transition;
 
   text-align: start;
+  color: var(--switch-text-color);
 }

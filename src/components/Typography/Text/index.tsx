@@ -6,7 +6,7 @@ import clsx from 'clsx'
 import style from './index.module.scss'
 
 import {
-  UITypographyAlign, UITypographyColor, UITypographyElements, UITypographySize, UITypographyWeight
+  UITypographyAlign, UITypographyColor, UITypographyElements, UITypographySize, UITypographyTransform, UITypographyWeight
 } from '@/types/ui'
 
 export interface TextProps extends HTMLAttributes<HTMLElement> {
@@ -15,15 +15,17 @@ export interface TextProps extends HTMLAttributes<HTMLElement> {
   weight?: UITypographyWeight
   align?: UITypographyAlign
   color?: UITypographyColor
+  transform?: UITypographyTransform,
   children?: ReactNode
   className?: string
 }
 
 const Text = forwardRef<HTMLElement, TextProps>(({
   as: Tag = 'p',
-  size = '3',
+  size = '5',
   weight = 'regular',
-  align,
+  align = 'start',
+  transform,
   color = 'default',
   children,
   className,
@@ -39,6 +41,7 @@ const Text = forwardRef<HTMLElement, TextProps>(({
           style[`weight-${weight}`],
           style[`color-${color}`],
           align && style[`align-${align}`],
+          transform && style[`transform-${transform}`],
           className
         )
       }

@@ -1,0 +1,50 @@
+$colors: (
+  'default': (
+    main: var(--slate-12),
+    hover: var(--slate-11),
+    active: var(--slate-12),
+    contrast: var(--gray-0),
+  ),
+  'primary': (
+    main: var(--blue-9),
+    hover: var(--blue-10),
+    active: var(--blue-11),
+    contrast: var(--white),
+  ),
+  'success': (
+    main: var(--green-9),
+    hover: var(--green-10),
+    active: var(--green-11),
+    contrast: var(--white),
+  ),
+  'danger': (
+    main: var(--red-9),
+    hover: var(--red-10),
+    active: var(--red-11),
+    contrast: var(--white),
+  ),
+  'warning': (
+    main: var(--amber-9),
+    hover: var(--amber-10),
+    active: var(--amber-11),
+    contrast: var(--white),
+  ),
+  'muted': (
+    main: var(--slate-3),
+    hover: var(--slate-4),
+    active: var(--slate-5),
+    contrast: var(--slate-11),
+  ),
+  'gray': (
+    main: var(--slate-9),
+    hover: var(--slate-10),
+    active: var(--slate-11),
+    contrast: var(--slate-12),
+  ),
+  'transparent': (
+    main: transparent,
+    hover: var(--gray-3),
+    active: var(--gray-5),
+    contrast: var(--slate-12),
+  )
+);

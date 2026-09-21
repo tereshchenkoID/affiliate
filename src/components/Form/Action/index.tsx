@@ -8,13 +8,14 @@ import {
   type ReactNode,
 } from 'react'
 import clsx from 'clsx'
-import { Loader } from 'lucide-react'
 
 import { Link } from '@/i18n/navigation'
 
+import Icon from '@/components/Overlay/Icon'
+
 import style from './index.module.scss'
 
-import { UIColor, UISize } from '@/types/ui'
+import { UIBoxJustify, UIColor, UISize } from '@/types/ui'
 
 export interface ActionProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'color'> {
@@ -23,9 +24,13 @@ export interface ActionProps
   as?: ElementType
   size?: Extract<UISize, '1' | '2' | '3' | '4' | '5'>
   color?: UIColor
+  square?: boolean
+  aspectRatio?: string | number
   loading?: boolean
   disabled?: boolean
   active?: boolean
+  justify?: UIBoxJustify
+  full?: boolean
   children?: ReactNode
   className?: string
 }
@@ -39,8 +44,13 @@ const Action = forwardRef<HTMLElement, ActionProps>(({
   loading = false,
   disabled = false,
   active = false,
+  square,
+  aspectRatio,
+  justify = 'center',
+  full,
   children,
   className,
+  style: styleProp,
   onClick,
   ...rest
 }, ref) => {
@@ -51,10 +61,13 @@ const Action = forwardRef<HTMLElement, ActionProps>(({
     style.block,
     style[`size-${size}`],
     style[`color-${color}`],
+    style[`justify-${justify}`],
     {
       [style.loading]: loading,
       [style.active]: active,
       [style.disabled]: disabled,
+      [style.square]: square,
+      [style.full]: full,
     },
     className
   )
@@ -69,11 +82,17 @@ const Action = forwardRef<HTMLElement, ActionProps>(({
     onClick?.(e as MouseEvent<HTMLButtonElement>)
   }
 
+  const computedStyle = {
+    ...styleProp,
+    ...(aspectRatio && { aspectRatio: String(aspectRatio) }),
+  }
+
   const getElementProps = () => {
     const baseProps = {
       ...rest,
       ref,
       className: classNames,
+      style: computedStyle,
       onClick: handleClick,
       'aria-label': rest['aria-label'] || ariaLabel,
     }
@@ -120,7 +139,7 @@ const Action = forwardRef<HTMLElement, ActionProps>(({
       {
         loading &&
         <span className={style.spinner}>
-          <Loader className={style.icon} />
+          <Icon name="loader" className={style.icon} />
         </span>
       }
     </Tag>
