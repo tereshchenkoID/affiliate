@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "results": "249"
+  },
+  "data": [
+    {
+      "value": "AF",
+      "label": "Афганістан"
+    },
+    {
+      "value": "AL",
+      "label": "Албанія"
+    },
+    {
+      "value": "DZ",
+      "label": "Алжир"
+    },
+    {
+      "value": "AS",
+      "label": "Американське Самоа"
+    },
+    {
+      "value": "AD",
+      "label": "Андорра"
+    },
+    {
+      "value": "AO",
+      "label": "Ангола"
+    }
+  ]
+}

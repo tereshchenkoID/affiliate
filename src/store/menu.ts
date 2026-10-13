@@ -9,7 +9,7 @@ interface MenuState {
 }
 
 export const useMenuStore = create<MenuState>((set) => ({
-  isOpen: false,
+  isOpen: true,
   openMenu: () => set({ isOpen: true }),
   closeMenu: () => set({ isOpen: false }),
   toggleMenu: () => set((state) => ({ isOpen: !state.isOpen })),

@@ -6,3 +6,10 @@ export interface SettingsProps {
   timezone?: SelectOption[],
   [key: string]: any
 }
+
+export interface ApiProps<T = SelectOption> {
+  meta: {
+    results: string
+  }
+  data: T[]
+}

@@ -1,43 +1,42 @@
+@use 'sass:map';
 @use '../../variables/breakpoints' as *;
 
-@mixin desk-m {
-  @media screen and (min-width: #{$screen-desk-m}) {
-    @content;
+@mixin media($bp) {
+  $width: map.get($breakpoints, $bp);
+
+  @if $width {
+    @media screen and (min-width: #{$width}) {
+      @content;
+    }
+  } @else {
+    @error "Empty: '#{$bp}'";
   }
+}
+
+@mixin desk-m {
+  @include media('desk-m') { @content; }
 }
 
 @mixin desk-s {
-  @media screen and (min-width: #{$screen-desk-s}) {
-    @content;
-  }
+  @include media('desk-s') { @content; }
 }
 
 @mixin tab-l {
-  @media screen and (min-width: #{$screen-tab-l}) {
-    @content;
-  }
+  @include media('tab-l')  { @content; }
 }
 
 @mixin tab-m {
-  @media screen and (min-width: #{$screen-tab-m}) {
-    @content;
-  }
+  @include media('tab-m')  { @content; }
 }
 
 @mixin tab-s {
-  @media screen and (min-width: #{$screen-tab-s}) {
-    @content;
-  }
+  @include media('tab-s')  { @content; }
 }
 
 @mixin mob-m {
-  @media screen and (min-width: #{$screen-mob-m}) {
-    @content;
-  }
+  @include media('mob-m')  { @content; }
 }
 
 @mixin mob-s {
-  @media screen and (min-width: #{$screen-mob-s}) {
-    @content;
-  }
+  @include media('mob-s')  { @content; }
 }

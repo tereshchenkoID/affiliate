@@ -182,7 +182,7 @@ const Select: React.FC<SelectProps> = ({
           {isRequired && <span>*</span>}
         </label>
 
-        <span>{value?.label || t('select_value')}</span>
+        <span className={style.default}>{value?.label || t('select_value')}</span>
         <Icon name="chevron-down" size="16" className={style.arrow} />
       </button>
       {

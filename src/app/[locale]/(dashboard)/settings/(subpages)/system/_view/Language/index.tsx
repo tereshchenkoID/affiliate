@@ -10,7 +10,12 @@ import { useValidations } from '@/hooks/useValidations'
 import Action from '@/components/Form/Action'
 import Select, { SelectOption } from '@/components/Form/Select'
 import Box from '@/components/Layout/Box'
+import Grid from '@/components/Layout/Grid'
 import Callout from '@/components/Overlay/Callout'
+import Heading from '@/components/Typography/Heading'
+import Text from '@/components/Typography/Text'
+
+import style from '../index.module.scss'
 
 import { SettingsProps } from '@/types/common'
 
@@ -54,48 +59,54 @@ const Language = ({ settings }: { settings: SettingsProps }) => {
   }
 
   return (
-    <Box
-      as="form"
-      display="grid"
-      gap="2"
-      onSubmit={handleSubmit}
-    >
-      <Callout color="primary" size="2">
-        <p>{t('notification.language_change')}</p>
-        <Action
-          size="1"
-          color="primary"
-          justify="start"
-          style={{ marginTop: '0.5rem' }}
-          onClick={() => {
-            router.replace(pathname, { locale: routing.defaultLocale })
-          }}
-        >
-          {t('notification.use_default_language')}
-        </Action>
-      </Callout>
-      <Select
-        data={settings?.languages}
-        value={filter.language}
-        onChange={(val) => handlePropsChange('language', val)}
-        placeholder={t('language')}
-        isRequired
-        isSearch
-        rules={[
-          VALIDATION_RULES.required(),
-        ]}
-        onValidate={(err) => setFieldError('language', err)}
-        error={errors.language}
-      />
-      <Action
-        type="submit"
-        color="success"
-        size="3"
-        disabled={isDisabled}
+    <Grid gap="2" className={style.grid}>
+      <Box>
+        <Heading as="h4" size="4">Language</Heading>
+        <Text size="3" color="gray">Choose the default language used across the workspace and affiliate registration.</Text>
+      </Box>
+      <Box
+        as="form"
+        display="grid"
+        gap="2"
+        onSubmit={handleSubmit}
       >
-        {t('save')}
-      </Action>
-    </Box>
+        <Callout color="primary" size="2">
+          <p>{t('notification.language_change')}</p>
+          <Action
+            size="1"
+            color="primary"
+            justify="start"
+            style={{ marginTop: '0.5rem' }}
+            onClick={() => {
+              router.replace(pathname, { locale: routing.defaultLocale })
+            }}
+          >
+            {t('notification.use_default_language')}
+          </Action>
+        </Callout>
+        <Select
+          data={settings?.languages}
+          value={filter.language}
+          onChange={(val) => handlePropsChange('language', val)}
+          placeholder={t('language')}
+          isRequired
+          isSearch
+          rules={[
+            VALIDATION_RULES.required(),
+          ]}
+          onValidate={(err) => setFieldError('language', err)}
+          error={errors.language}
+        />
+        <Action
+          type="submit"
+          color="success"
+          size="3"
+          disabled={isDisabled}
+        >
+          {t('save')}
+        </Action>
+      </Box>
+    </Grid>
   )
 }
 

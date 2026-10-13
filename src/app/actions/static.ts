@@ -14,6 +14,16 @@ export const getSettings = cache(async () => {
   })
 })
 
+export const getCountries = cache(async () => {
+  return apiRequest('countries', {
+    cache: 'force-cache',
+    next: {
+      revalidate: 3600,
+      tags: ['countries']
+    },
+  })
+})
+
 export const getCachedUser = cache(async () => {
   return await apiRequest('auth', {
     method: 'GET',

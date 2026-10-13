@@ -1,4 +1,5 @@
 .block {
+  @include transition(transform);
   @include scroll-y;
 
   position: fixed;
@@ -9,4 +10,9 @@
   background-color: var(--gray-2);
   box-shadow: 0 rem(4px) rem(12px) color-alpha(var(--slate-8), 0.8), 0 rem(1px) rem(3px) color-alpha(var(--slate-8), 0.4);
   z-index: $z-index-8;
+  transform: translateX(100%);
+
+  &.active {
+    transform: translateX(0);
+  }
 }

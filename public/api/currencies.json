@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "results": "3"
+  },
+  "data": [
+    {
+      "value": "eur",
+      "label": "EUR (Euro)"
+    },
+    {
+      "value": "usd",
+      "label": "USD (US Dollar)"
+    },
+    {
+      "value": "ron",
+      "label": "RON (New Leu)"
+    }
+  ]
+}

@@ -22,7 +22,7 @@ const Section = () => {
     <header className={style.block}>
       <nav className={style.menu}>
         {
-          isOpen &&
+          !isOpen &&
           <>
             <div
               className={style.link}

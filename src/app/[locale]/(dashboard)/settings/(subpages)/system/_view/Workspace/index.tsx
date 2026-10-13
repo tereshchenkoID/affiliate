@@ -2,11 +2,17 @@ import React, { useState } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { useFilterState } from '@/hooks/useFilterState'
+import { useUser } from '@/hooks/useUser'
 import { useValidations } from '@/hooks/useValidations'
 
 import Action from '@/components/Form/Action'
 import Field from '@/components/Form/Field'
 import Box from '@/components/Layout/Box'
+import Grid from '@/components/Layout/Grid'
+import Heading from '@/components/Typography/Heading'
+import Text from '@/components/Typography/Text'
+
+import style from '../index.module.scss'
 
 interface FormState {
   name: string
@@ -17,11 +23,12 @@ type FormErrors = Partial<Record<keyof FormState, string | null>>
 
 const Workspace = () => {
   const t = useTranslations()
+  const { user } = useUser()
   const VALIDATION_RULES = useValidations()
 
   const { filter, handlePropsChange } = useFilterState<FormState>({
-    name: '',
-    website: '',
+    name: user?.workspace.name,
+    website: user?.workspace.website,
   })
 
   const [errors, setErrors] = useState<FormErrors>({})
@@ -39,47 +46,53 @@ const Workspace = () => {
   }
 
   return (
-    <Box
-      as="form"
-      display="grid"
-      gap="2"
-      onSubmit={handleSubmit}
-    >
-      <Field
-        data={filter.name}
-        placeholder={t('name')}
-        onChange={(val) => handlePropsChange('name', val)}
-        isRequired={true}
-        rules={[
-          VALIDATION_RULES.required(),
-          VALIDATION_RULES.minLength(3),
-          VALIDATION_RULES.latinAlphaNumeric(),
-        ]}
-        onValidate={(err) => setFieldError('name', err)}
-        error={errors.name}
-      />
-      <Field
-        data={filter.website}
-        placeholder={t('company_website')}
-        onChange={(val) => handlePropsChange('website', val)}
-        isRequired={true}
-        rules={[
-          VALIDATION_RULES.required(),
-          VALIDATION_RULES.minLength(3),
-          VALIDATION_RULES.latinAlphaNumeric(),
-        ]}
-        onValidate={(err) => setFieldError('website', err)}
-        error={errors.website}
-      />
-      <Action
-        type="submit"
-        color="success"
-        size="3"
-        disabled={isDisabled}
+    <Grid gap="2" className={style.grid}>
+      <Box>
+        <Heading as="h4" size="4">Workspace setup</Heading>
+        <Text size="3" color="gray">Update your workspace name and website address used across the platform.</Text>
+      </Box>
+      <Box
+        as="form"
+        display="grid"
+        gap="2"
+        onSubmit={handleSubmit}
       >
-        {t('save')}
-      </Action>
-    </Box>
+        <Field
+          data={filter.name}
+          placeholder={t('name')}
+          onChange={(val) => handlePropsChange('name', val)}
+          isRequired={true}
+          rules={[
+            VALIDATION_RULES.required(),
+            VALIDATION_RULES.minLength(3),
+            VALIDATION_RULES.latinAlphaNumeric(),
+          ]}
+          onValidate={(err) => setFieldError('name', err)}
+          error={errors.name}
+        />
+        <Field
+          data={filter.website}
+          placeholder={t('company_website')}
+          onChange={(val) => handlePropsChange('website', val)}
+          isRequired={true}
+          rules={[
+            VALIDATION_RULES.required(),
+            VALIDATION_RULES.minLength(3),
+            VALIDATION_RULES.latinAlphaNumeric(),
+          ]}
+          onValidate={(err) => setFieldError('website', err)}
+          error={errors.website}
+        />
+        <Action
+          type="submit"
+          color="success"
+          size="3"
+          disabled={isDisabled}
+        >
+          {t('save')}
+        </Action>
+      </Box>
+    </Grid>
   )
 }
 

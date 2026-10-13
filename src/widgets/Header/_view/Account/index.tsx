@@ -1,4 +1,6 @@
+import { Dispatch, SetStateAction } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
+import clsx from 'clsx'
 
 import { useModal } from '@/hooks/useModal'
 import { useUser } from '@/hooks/useUser'
@@ -13,9 +15,19 @@ import Text from '@/components/Typography/Text'
 import style from './index.module.scss'
 
 import { SettingsProps } from '@/types/common'
-import { User } from '@/types/user'
 
-const Account = ({ settings }: { settings: SettingsProps, user: User }) => {
+const Account = (
+  {
+    settings,
+    account,
+    setAccount
+  }:
+  {
+    settings: SettingsProps,
+    account: boolean,
+    setAccount: Dispatch<SetStateAction<boolean>>
+  }
+) => {
   const t = useTranslations()
   const { user } = useUser()
   const { openModal } = useModal()
@@ -26,10 +38,20 @@ const Account = ({ settings }: { settings: SettingsProps, user: User }) => {
     label: currentLocale
   }
 
-  // TODO hide menu
-
   return (
-    <Box p="3" display="flex" direction="column" className={style.block}>
+    <Box
+      p="3"
+      display="flex"
+      direction="column"
+      className={
+        clsx(
+          style.block,
+          {
+            [style.active]: account
+          }
+        )
+      }
+    >
       <Box pb="3">
         <Heading as="h4" size="5">{user?.profile?.name} {user?.profile?.surname}</Heading>
         <Text size="4" color="gray">{user?.profile?.email}</Text>
@@ -52,7 +74,10 @@ const Account = ({ settings }: { settings: SettingsProps, user: User }) => {
           color="transparent"
           justify="start"
           full={true}
-          onClick={() => openModal('language', { data: settings?.languages, locale: currentLang }, { title: t('notification.change_language') })}
+          onClick={() => {
+            openModal('language', { data: settings?.languages, locale: currentLang }, { title: t('notification.change_language') })
+            setAccount(false)
+          }}
         >
           <Icon name="globe" size="16" />
           {currentLang?.label} ({currentLang?.value})
@@ -62,7 +87,10 @@ const Account = ({ settings }: { settings: SettingsProps, user: User }) => {
           color="transparent"
           justify="start"
           full={true}
-          onClick={() => openModal('theme', { data: settings?.themes }, { title: t('notification.change_theme') })}
+          onClick={() => {
+            openModal('theme', { data: settings?.themes }, { title: t('notification.change_theme') })
+            setAccount(false)
+          }}
         >
           <Icon name="sun" size="16" />
           {t('theme')}
@@ -76,7 +104,10 @@ const Account = ({ settings }: { settings: SettingsProps, user: User }) => {
           color="transparent"
           justify="start"
           full={true}
-          onClick={() => openModal('password', { }, { title: t('notification.change_password') })}
+          onClick={() => {
+            openModal('password', { }, { title: t('notification.change_password') })
+            setAccount(false)
+          }}
         >
           <Icon name="lock" size="16" />
           {t('notification.change_password')}

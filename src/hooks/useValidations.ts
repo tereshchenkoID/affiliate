@@ -88,7 +88,7 @@ export const useValidations = () => {
     latinAlphaNumeric: (msg = 'errors.latin_alphanumeric'): ValidationRule => (value) => {
       const v = normalize(value).trim()
       if (!v) return null
-      const regex = /^[a-zA-Z0-9@._+\-]+$/
+      const regex = /^[a-zA-Z0-9@._+\- ]+$/
       return regex.test(v) ? null : t(msg)
     },
 

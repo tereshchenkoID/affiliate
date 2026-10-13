@@ -17,6 +17,10 @@
     .selected {
       border-color: var(--blue-9);
     }
+
+    .default {
+      opacity: 1;
+    }
   }
 
   &.active {
@@ -113,6 +117,12 @@
 
 .list {
   @include scroll-y;
+}
+
+.default {
+  @include transition(opacity);
+
+  opacity: 0;
 }
 
 .empty {

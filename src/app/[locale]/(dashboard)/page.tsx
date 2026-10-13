@@ -1,5 +1,7 @@
+import Section from './_view'
+
 export default function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <Section />
   )
 }

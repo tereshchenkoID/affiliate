@@ -13,12 +13,11 @@ import Account from './Account'
 
 import style from './index.module.scss'
 
-const Section = ({
-  settings,
-  user,
-}: { settings: any, user: any }) => {
+import { SettingsProps } from '@/types/common'
+
+const Section = ({ settings }: { settings: SettingsProps }) => {
   const t = useTranslations()
-  const [account, setAccount] = useState<Boolean | null>(false)
+  const [account, setAccount] = useState<boolean>(false)
 
   return (
     <header className={style.block}>
@@ -66,13 +65,11 @@ const Section = ({
           </Action>
         </Tooltip>
       </Box>
-      {
-        account &&
-        <Account
-          settings={settings}
-          user={user}
-        />
-      }
+      <Account
+        settings={settings}
+        account={account}
+        setAccount={setAccount}
+      />
     </header>
   )
 }

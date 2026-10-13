@@ -1,3 +1,11 @@
 .block {
-  max-width: 70%;
+  @include tab-l {
+    max-width: 70%;
+  }
+}
+
+.grid {
+  @include tab-l {
+    grid-template-columns: 1.5fr 3fr;
+  }
 }

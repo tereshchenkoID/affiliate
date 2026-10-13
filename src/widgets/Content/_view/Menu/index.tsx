@@ -1,5 +1,6 @@
 import React, { startTransition, useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
+import clsx from 'clsx'
 
 import { usePathname } from '@/i18n/navigation'
 
@@ -43,116 +44,129 @@ const Menu = () => {
     setOpen((prev) => (prev === id ? null : id))
   }
 
-  if (!navigation?.length || isOpen) return null
+  if (!navigation?.length) return null
+
+  // if (!navigation?.length || isOpen) return null
 
   return (
-    <div className={style.block}>
-      <Box
-        display="flex"
-        justify="between"
-        gap="1"
-        py="1"
-        pl="2"
-      >
-        {
-          active &&
-          <Heading as="h6" size="4">
-            {t(active.text)}
-          </Heading>
-        }
-        <Tooltip content={t('notification.collapse_sidebar')}>
-          <Action
-            size="1"
-            color="muted"
-            square
-            onClick={toggleMenu}
-          >
-            <Icon name="chevrons-left" size="16" />
-          </Action>
-        </Tooltip>
-      </Box>
-      {
-        navigation.map((el, _) =>
-        <details
-          key={el.id}
-          name={active?.text?.toLowerCase()}
-          open={open === el.id}
-          className={style.wrapper}
+    <div
+      className={
+        clsx(
+          style.block,
+          {
+            [style.open]: isOpen
+          }
+        )
+      }
+    >
+      <div className={style.scroll}>
+        <Box
+          display="flex"
+          justify="between"
+          gap="1"
+          py="1"
+          pl="2"
         >
-          <Box
-            as="summary"
-            display="flex"
-            justify="between"
-            gap="1"
-            py="2"
-            pl="2"
-            pr="1"
-            className={style.summary}
-            onClick={(e) => handleToggle(e, el.id)}
+          {
+            active &&
+            <Heading as="h6" size="4">
+              {t(active.text)}
+            </Heading>
+          }
+          <Tooltip content={t('notification.collapse_sidebar')}>
+            <Action
+              size="1"
+              color="muted"
+              square
+              onClick={toggleMenu}
+            >
+              <Icon name="chevrons-left" size="16" />
+            </Action>
+          </Tooltip>
+        </Box>
+        {
+          navigation.map((el, _) =>
+          <details
+            key={el.id}
+            name={active?.text?.toLowerCase()}
+            open={open === el.id}
+            className={style.wrapper}
           >
-            <Text
-              as="p"
-              size="2"
-              weight="bold"
-              color="gray"
-              transform="uppercase"
-            >
-              {t(el.text)}
-            </Text>
-            <Icon name="chevron-down" size="16" className={style.arrow} />
-          </Box>
-          <div className={style.dropdown}>
             <Box
-              as="ul"
-              display="grid"
-              gap="half"
-              mb="half"
-              className={style.list}
+              as="summary"
+              display="flex"
+              justify="between"
+              gap="1"
+              py="2"
+              pl="2"
+              pr="1"
+              className={style.summary}
+              onClick={(e) => handleToggle(e, el.id)}
             >
-              {
-                el.children
-                  ?
-                    el.children?.map((link: NavigationItem, _: number ) => {
-                      const isActive = pathname === link.url || pathname.endsWith(link.url ?? '')
-
-                      return (
-                        <Box
-                          key={link.id}
-                          as="li"
-                        >
-                          <Action
-                            to={link.url}
-                            size="2"
-                            color={isActive ? 'primary' : 'transparent'}
-                            active={isActive}
-                            justify="start"
-                            full={true}
-                          >
-                            {t(link.text)}
-                          </Action>
-                        </Box>
-                      )
-                    })
-                  :
-                    <Box
-                      key={el.id}
-                      as="li"
-                    >
-                      <Action
-                        to={el.url}
-                        size="2"
-                        color="transparent"
-                        justify="start"
-                        full={true}
-                      >
-                        {t(el.text)}
-                      </Action>
-                    </Box>
-              }
+              <Text
+                as="p"
+                size="2"
+                weight="bold"
+                color="gray"
+                transform="uppercase"
+              >
+                {t(el.text)}
+              </Text>
+              <Icon name="chevron-down" size="16" className={style.arrow} />
             </Box>
-          </div>
-        </details>
-      )}
+            <div className={style.dropdown}>
+              <Box
+                as="ul"
+                display="grid"
+                gap="half"
+                mb="half"
+                className={style.list}
+              >
+                {
+                  el.children
+                    ?
+                      el.children?.map((link: NavigationItem, _: number ) => {
+                        const isActive = pathname === link.url || pathname.endsWith(link.url ?? '')
+
+                        return (
+                          <Box
+                            key={link.id}
+                            as="li"
+                          >
+                            <Action
+                              to={link.url}
+                              size="2"
+                              color={isActive ? 'primary' : 'transparent'}
+                              active={isActive}
+                              justify="start"
+                              full={true}
+                            >
+                              {t(link.text)}
+                            </Action>
+                          </Box>
+                        )
+                      })
+                    :
+                      <Box
+                        key={el.id}
+                        as="li"
+                      >
+                        <Action
+                          to={el.url}
+                          size="2"
+                          color="transparent"
+                          justify="start"
+                          full={true}
+                        >
+                          {t(el.text)}
+                        </Action>
+                      </Box>
+                }
+              </Box>
+            </div>
+          </details>
+        )}
+      </div>
     </div>
   )
 }

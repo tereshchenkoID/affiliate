@@ -1,0 +1,108 @@
+.block {
+  display: inline-flex;
+  position: relative;
+  width: fit-content;
+}
+
+.trigger {
+  @include transition;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: rem(8px) rem(12px);
+  border: rem(1px) solid var(--gray-7);
+  border-radius: var(--border-radius-6);
+  background-color: var(--gray-0);
+  cursor: pointer;
+
+  &.open {
+    border-color: var(--blue-10);
+
+    .icon {
+      color: var(--blue-10);
+    }
+
+    .arrow {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.icon,
+.arrow {
+  @include transition;
+}
+
+.dropdown {
+  display: grid;
+  grid-template-columns: 1fr auto rem(160px);
+  gap: rem(16px);
+  position: absolute;
+  inset-block-start: calc(100% + rem(8px));
+  inset-inline-start: 0;
+  padding: rem(12px);
+  border: rem(1px) solid var(--blue-10);
+  border-radius: var(--border-radius-6);
+  background-color: var(--gray-0);
+  z-index: $z-index-1;
+}
+
+.month {
+  width: rem(238px);
+}
+
+.cell {
+  @include flex(center, center);
+
+  height: rem(34px);
+
+  &.range {
+    background-color: color-alpha(var(--blue-10), 0.2);
+  }
+
+  &.start {
+    background-color: color-alpha(var(--blue-10), 0.2);
+    border-top-left-radius: rem(17px);
+    border-bottom-left-radius: rem(17px);
+  }
+
+  &.end {
+    background-color: color-alpha(var(--blue-10), 0.2);
+    border-top-right-radius: rem(17px);
+    border-bottom-right-radius: rem(17px);
+  }
+}
+
+.day {
+  @include flex(center, center);
+  @include size(rem(32px));
+
+  border-radius: 50%;
+  font-size: rem(14px);
+
+  @include hover {
+    &:hover {
+      background-color: var(--blue-9);
+      color: var(--white);
+    }
+  }
+
+  &.selected {
+    background-color: var(--blue-10);
+    color: var(--white);
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  &.today {
+    outline: rem(1px) solid var(--blue-10);
+  }
+}
+
+.placeholder {
+  width: rem(24px);
+}

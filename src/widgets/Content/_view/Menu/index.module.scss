@@ -1,10 +1,24 @@
 .block {
+  @include transition;
+
+  flex-shrink: 0;
+  width: 0;
+  background-color: var(--gray-2);
+  overflow: hidden;
+  border-right: rem(1px) solid transparent;
+  interpolate-size: allow-keywords;
+
+  &.open {
+    border-right-color: var(--gray-4);
+    width: rem(210px);
+  }
+}
+
+.scroll {
   @include scroll-y;
 
   padding: rem(8px);
-  background-color: var(--gray-2);
-  border-right: rem(1px) solid var(--gray-4);
-  interpolate-size: allow-keywords;
+  height: 100%;
 }
 
 .wrapper {
